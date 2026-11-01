@@ -15,5 +15,7 @@
     // les formulaires passent par le code du Worker, tout le reste est servi directement
     "run_worker_first": ["/api/*"]
   },
+  // le 1er de chaque mois à 9 h (UTC) : garde la clé Brevo active (voir worker/index.ts)
+  "triggers": { "crons": ["0 9 1 * *"] },
   "observability": { "enabled": true }
 }
