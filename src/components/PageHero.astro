@@ -1,0 +1,82 @@
+---
+// Bandeau d'en-tête des pages intérieures.
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  crumbs?: { name: string; href: string }[];
+}
+const { eyebrow, title, lead, crumbs = [] } = Astro.props;
+---
+
+<section class="page-hero" data-hero>
+  <div class="aurora" aria-hidden="true"><span data-depth="0.04"></span><span data-depth="-0.05"></span><span></span></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="container page-hero-inner" data-hero-content>
+    {
+      crumbs.length > 0 && (
+        <nav class="crumbs" aria-label="Fil d'Ariane" data-reveal>
+          <a href="/">Accueil</a>
+          {crumbs.map((c, i) => (
+            <>
+              <span aria-hidden="true">/</span>
+              {i === crumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href}>{c.name}</a>}
+            </>
+          ))}
+        </nav>
+      )
+    }
+    {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
+    <h1 class="display-2" data-split="words">{title}</h1>
+    {lead && <p class="lead" data-reveal>{lead}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding-top: calc(var(--header-h) + clamp(4rem, 10vw, 8rem));
+    padding-bottom: clamp(3.5rem, 8vw, 6.5rem);
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-hero .aurora span:nth-child(1) {
+    width: 40vw;
+    height: 40vw;
+    top: -20vw;
+    left: -10vw;
+  }
+  .page-hero .aurora span:nth-child(2) {
+    width: 30vw;
+    height: 30vw;
+    top: -10vw;
+    right: -5vw;
+  }
+  .page-hero-inner {
+    position: relative;
+    max-width: 1000px;
+    margin-left: max(var(--gutter), (100% - var(--container)) / 2);
+  }
+  .page-hero h1 {
+    max-width: 18ch;
+  }
+  .page-hero .lead {
+    margin-top: 1.6rem;
+    max-width: 60ch;
+  }
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .crumbs a:hover {
+    color: var(--text);
+  }
+  .crumbs [aria-current] {
+    color: var(--text-soft);
+  }
+</style>

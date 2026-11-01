@@ -1,0 +1,212 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BrowserFrame from '../../components/BrowserFrame.astro';
+import Icon from '../../components/Icon.astro';
+import CTA from '../../components/CTA.astro';
+import { formatDate } from '../../utils/format';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((project, i) => ({
+    params: { slug: project.id },
+    props: { project, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  next: CollectionEntry<'projects'>;
+}
+const { project, next } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+
+const meta = [
+  { label: 'Client', value: d.client },
+  { label: 'Secteur', value: d.industry },
+  d.budget && { label: 'Budget', value: d.budget },
+  d.date && { label: 'Date', value: formatDate(d.date) },
+].filter(Boolean) as { label: string; value: string }[];
+
+const crumbs = [
+  { name: 'Réalisations', href: '/projects' },
+  { name: d.client, href: `/projects/${project.id}` },
+];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: d.title,
+  description: d.description,
+  creator: { '@id': `${site.url}/#organization` },
+  url: `${site.url}/projects/${project.id}`,
+  ...(d.date && { dateCreated: d.date.toISOString().slice(0, 10) }),
+};
+---
+
+<Base title={`${d.title} : ${d.client} | Portfolio Growthify`} description={d.description} breadcrumbs={crumbs} jsonLd={[ld]}>
+  <PageHero eyebrow={d.industry} title={d.title} lead={d.summary} crumbs={crumbs}>
+    <dl class="meta" data-reveal>
+      {
+        meta.map((m) => (
+          <div>
+            <dt>{m.label}</dt>
+            <dd>{m.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </PageHero>
+
+  <section class="section showcase" data-screen-scope>
+    <div class="container">
+      <div class="showcase-frame" data-reveal>
+        <BrowserFrame src={d.screenshot} alt={d.screenshotAlt} url={d.client.toLowerCase().replace(/[^a-z]/g, '') + '.fr'} mode="scroll" height="min(78vh, 760px)" eager />
+      </div>
+      <p class="showcase-hint muted" data-reveal>Faites défiler : le site se déroule dans le cadre.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container case-grid">
+      <aside class="case-aside">
+        <div class="card case-card" data-reveal>
+          <h2>Missions</h2>
+          <p class="muted">{d.tasks}</p>
+          <h2>Outils</h2>
+          <ul class="case-stack">{d.stack.map((s) => <li>{s}</li>)}</ul>
+        </div>
+      </aside>
+      <div class="prose" data-reveal>
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight next">
+    <div class="container">
+      <a href={`/projects/${next.id}`} class="next-link" data-cursor-text="Suivant">
+        <span class="eyebrow">Projet suivant</span>
+        <span class="next-title display-2">{next.data.title}</span>
+        <span class="next-arrow"><Icon name="arrow" size={32} /></span>
+      </a>
+    </div>
+  </section>
+
+  <CTA title="Un projet similaire en tête ?" />
+</Base>
+
+<style>
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 3rem;
+    margin: 2.4rem 0 0;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--line);
+  }
+  .meta dt {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .meta dd {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .showcase-frame {
+    max-width: 1080px;
+    margin-inline: auto;
+  }
+  .showcase-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+  }
+  .case-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .case-aside {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+  .case-card {
+    padding: 2rem;
+    display: grid;
+    gap: 0.8rem;
+  }
+  .case-card h2 {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--violet-300);
+  }
+  .case-card h2:not(:first-child) {
+    margin-top: 1rem;
+  }
+  .case-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .case-stack li {
+    padding: 0.35rem 0.8rem;
+    border-radius: 8px;
+    background: rgb(255 255 255 / 0.06);
+    font-size: 0.88rem;
+  }
+  .next-link {
+    display: grid;
+    gap: 0.5rem;
+    padding: clamp(2rem, 5vw, 4rem) 0;
+    border-block: 1px solid var(--line);
+    position: relative;
+  }
+  .next-title {
+    max-width: 18ch;
+    transition: color 0.4s;
+  }
+  .next-link:hover .next-title {
+    color: var(--violet-300);
+  }
+  .next-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    translate: 0 -50%;
+    display: grid;
+    place-items: center;
+    width: clamp(64px, 8vw, 96px);
+    height: clamp(64px, 8vw, 96px);
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    transition: background 0.4s, transform 0.6s var(--ease);
+  }
+  .next-link:hover .next-arrow {
+    background: var(--gradient);
+    transform: rotate(-45deg);
+  }
+  @media (max-width: 900px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+    }
+    .case-aside {
+      position: static;
+    }
+    .next-arrow {
+      display: none;
+    }
+  }
+</style>

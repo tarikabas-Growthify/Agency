@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Base title="Page introuvable | Growthify" description="Cette page n'existe pas ou a été déplacée." noindex>
+  <section class="nf" data-hero>
+    <div class="aurora" aria-hidden="true"><span data-depth="0.05"></span><span data-depth="-0.05"></span><span></span></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="container nf-inner" data-hero-content>
+      <div class="nf-symbol" data-depth="0.04" aria-hidden="true"><div data-float><Logo variant="symbol" /></div></div>
+      <p class="eyebrow" data-reveal>Erreur 404</p>
+      <h1 class="display-1" data-split="chars">Page introuvable.</h1>
+      <p class="lead" data-reveal>Cette page n'existe pas ou a déménagé. Pas de panique, la croissance continue par ici :</p>
+      <div class="nf-actions" data-reveal>
+        <a href="/" class="btn btn--gradient" data-magnetic>Retour à l'accueil <span class="btn-icon"><Icon name="arrow" size={16} /></span></a>
+        <a href="/contact-us" class="btn btn--ghost" data-magnetic>Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding-top: var(--header-h);
+    overflow: hidden;
+    text-align: center;
+  }
+  .nf-inner {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 1.4rem;
+  }
+  .nf-symbol {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+  }
+  .nf .eyebrow {
+    margin: 0;
+  }
+  .nf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+</style>

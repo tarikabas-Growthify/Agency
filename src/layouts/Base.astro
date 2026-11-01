@@ -1,0 +1,256 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Crumb {
+  name: string;
+  href: string;
+}
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+  breadcrumbs?: Crumb[];
+}
+
+const { title, description, image = '/og-default.jpg', type = 'website', noindex = false, jsonLd = [], breadcrumbs } = Astro.props;
+
+// Adresse propre de la page, sans « .html » ni « / » final (même format que l'ancien site Webflow).
+const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '');
+const canonical = cleanPath ? `${site.url}${cleanPath}` : `${site.url}/`;
+const ogImage = new URL(image, site.url).href;
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${site.url}/#organization`,
+  name: 'Growthify',
+  url: site.url,
+  logo: `${site.url}/apple-touch-icon.png`,
+  image: `${site.url}/og-default.jpg`,
+  description: site.description,
+  email: site.email,
+  telephone: site.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  areaServed: ['Paris', 'Île-de-France', 'France'],
+  sameAs: [site.socials.linkedin, site.socials.instagram],
+};
+
+const crumbLd = breadcrumbs && {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ name: 'Accueil', href: '/' }, ...breadcrumbs].map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: c.href === '/' ? `${site.url}/` : `${site.url}${c.href}`,
+  })),
+};
+
+const schemas = [organization, ...(crumbLd ? [crumbLd] : []), ...jsonLd];
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Growthify" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#070a1f" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+    <script is:inline>
+      // Active les animations avant l'affichage (sauf si l'utilisateur préfère réduire les animations).
+      // Filet de sécurité : si le script d'animation ne démarre pas, on réaffiche tout au bout de 3 s.
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var html = document.documentElement;
+        html.classList.add('motion');
+        // Écran d'introduction : seulement à la première page vue de la visite.
+        try {
+          if (!sessionStorage.getItem('gfy-intro')) html.classList.add('first-visit');
+        } catch (e) {}
+        setTimeout(function () {
+          if (!window.__motionReady) html.classList.remove('motion', 'first-visit');
+        }, 3000);
+      })();
+    </script>
+
+    <ClientRouter fallback="swap" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <div class="loader" data-loader aria-hidden="true" transition:persist>
+      <div class="loader-inner">
+        <Logo variant="symbol" class="loader-logo" />
+        <div class="loader-count"><span data-loader-count>0</span>%</div>
+      </div>
+    </div>
+
+    <div class="curtain" data-curtain aria-hidden="true" transition:persist>
+      <Logo variant="symbol" class="curtain-logo" />
+    </div>
+
+    <div class="scroll-progress" data-progress aria-hidden="true" transition:persist></div>
+    <div class="cursor" data-cursor aria-hidden="true" transition:persist><span class="cursor-label" data-cursor-label></span></div>
+    <div class="cursor-dot" data-cursor-dot aria-hidden="true" transition:persist></div>
+    <div class="grain" aria-hidden="true" transition:persist></div>
+
+    <Header />
+
+    <main id="contenu">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>
+
+<style>
+  .loader,
+  .curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    display: grid;
+    place-items: center;
+    background: var(--ink-950);
+    pointer-events: none;
+  }
+  .loader {
+    display: none;
+  }
+  :global(html.first-visit) .loader {
+    display: grid;
+  }
+  .loader-inner {
+    display: grid;
+    justify-items: center;
+    gap: 1.6rem;
+  }
+  :global(.loader-logo) {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--text);
+  }
+  .loader-count {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .curtain {
+    background: var(--gradient);
+    clip-path: inset(100% 0 0 0);
+  }
+  :global(.curtain-logo) {
+    font-size: 3rem;
+    color: #fff;
+  }
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 95;
+    height: 2px;
+    background: var(--gradient);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    pointer-events: none;
+  }
+  .cursor,
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 140;
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .cursor {
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border: 1px solid rgb(255 255 255 / 0.5);
+    display: grid;
+    place-items: center;
+    transition: width 0.4s var(--ease), height 0.4s var(--ease), margin 0.4s var(--ease), background 0.4s, border-color 0.4s;
+  }
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    background: #fff;
+  }
+  .cursor.is-hover {
+    width: 70px;
+    height: 70px;
+    margin: -35px 0 0 -35px;
+    background: rgb(109 76 250 / 0.18);
+    border-color: var(--violet-400);
+  }
+  .cursor.has-label {
+    width: 96px;
+    height: 96px;
+    margin: -48px 0 0 -48px;
+    background: var(--gradient);
+    border-color: transparent;
+  }
+  .cursor-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cursor.has-label .cursor-label {
+    opacity: 1;
+  }
+  @media (hover: none), (pointer: coarse) {
+    .cursor,
+    .cursor-dot {
+      display: none;
+    }
+  }
+</style>

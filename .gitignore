@@ -1,0 +1,17 @@
+# Dépendances et fichiers générés
+node_modules/
+dist/
+.astro/
+.wrangler/
+
+# Secrets locaux (ne jamais publier)
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Système
+.DS_Store
+
+# Réglages locaux de Claude Code
+.claude/settings.local.json

@@ -1,0 +1,17 @@
+---
+// Protection anti-robots Cloudflare Turnstile (gratuite, sans cookie publicitaire).
+// La clé publique est lue dans la variable d'environnement PUBLIC_TURNSTILE_SITE_KEY.
+// Sans clé (en local), le widget n'est pas affiché et seul le champ piège protège le formulaire.
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
+{siteKey && <div class="turnstile" data-turnstile data-sitekey={siteKey} />}
+
+<style>
+  .turnstile {
+    min-height: 0;
+  }
+  .turnstile:empty {
+    display: none;
+  }
+</style>

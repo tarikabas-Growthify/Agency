@@ -1,0 +1,241 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Turnstile from '../components/Turnstile.astro';
+import FAQ from '../components/FAQ.astro';
+import { site } from '../data/site';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const contactLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contacter Growthify',
+  url: `${site.url}/contact-us`,
+  about: { '@id': `${site.url}/#organization` },
+};
+---
+
+<Base
+  title="Contact : parlons de votre projet | Growthify"
+  description="Une idée, un projet ou besoin d'un audit gratuit ? Contactez Growthify, agence digitale à Paris : formulaire, e-mail, téléphone ou rendez-vous en ligne."
+  breadcrumbs={[{ name: 'Contact', href: '/contact-us' }]}
+  jsonLd={[contactLd]}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Une idée, un projet ? Discutons-en dès aujourd'hui."
+    lead="Audit gratuit, devis ou simple question : écrivez-nous, nous répondons sous 24 h ouvrées."
+    crumbs={[{ name: 'Contact', href: '/contact-us' }]}
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <aside class="contact-info" data-reveal-stagger>
+        <a href={site.calendly} target="_blank" rel="noopener" class="info-card info-card--primary card" data-magnetic="0.1">
+          <span class="info-icon"><Icon name="calendar" size={22} /></span>
+          <span>
+            <strong>Réserver un appel de 30 min</strong>
+            <small>Choisissez un créneau, c'est gratuit et sans engagement.</small>
+          </span>
+          <Icon name="arrow-up-right" size={20} class="info-arrow" />
+        </a>
+        <a href={`mailto:${site.email}`} class="info-card card">
+          <span class="info-icon"><Icon name="mail" size={22} /></span>
+          <span>
+            <strong>{site.email}</strong>
+            <small>Écrivez-nous directement</small>
+          </span>
+        </a>
+        <a href={site.phoneHref} class="info-card card">
+          <span class="info-icon"><Icon name="phone" size={22} /></span>
+          <span>
+            <strong>{site.phone}</strong>
+            <small>Du lundi au vendredi</small>
+          </span>
+        </a>
+        <div class="info-card card">
+          <span class="info-icon"><Icon name="pin" size={22} /></span>
+          <span>
+            <strong>Nos bureaux</strong>
+            <small>{site.address.street}, {site.address.postalCode} {site.address.city}</small>
+          </span>
+        </div>
+      </aside>
+
+      <form class="contact-form card" action="/api/contact" method="post" data-form data-reveal>
+        <h2 class="display-3">Initier le contact</h2>
+        <div class="row">
+          <div class="field">
+            <label for="firstName">Prénom *</label>
+            <input id="firstName" name="firstName" required autocomplete="given-name" maxlength="80" />
+          </div>
+          <div class="field">
+            <label for="lastName">Nom *</label>
+            <input id="lastName" name="lastName" required autocomplete="family-name" maxlength="80" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" maxlength="160" />
+          </div>
+          <div class="field">
+            <label for="phone">Téléphone <span class="muted">(facultatif)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="company">Entreprise <span class="muted">(facultatif)</span></label>
+            <input id="company" name="company" autocomplete="organization" maxlength="120" />
+          </div>
+          <div class="field">
+            <label for="service">Votre besoin</label>
+            <select id="service" name="service">
+              <option value="">Choisir un service</option>
+              {services.map((s) => <option value={s.data.title}>{s.data.title}</option>)}
+              <option value="Audit gratuit">Audit gratuit</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required maxlength="5000" placeholder="Décrivez-nous votre besoin…"></textarea>
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="consent" required />
+          <span>J'accepte que Growthify utilise ces informations pour répondre à ma demande. <a href="/privacy-policy">En savoir plus</a></span>
+        </label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+        <Turnstile />
+        <div class="form-foot">
+          <button class="btn btn--gradient" type="submit" data-magnetic="0.2">
+            Envoyer le message <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span>
+          </button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <FAQ />
+</Base>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .contact-info {
+    display: grid;
+    gap: 1rem;
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.3rem 1.4rem;
+  }
+  .info-card strong {
+    display: block;
+    font-weight: 600;
+  }
+  .info-card small {
+    display: block;
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-top: 0.15rem;
+  }
+  .info-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--gradient-soft);
+    border: 1px solid var(--line-strong);
+    color: var(--violet-300);
+  }
+  .info-card--primary {
+    background: var(--gradient);
+    border-color: transparent;
+  }
+  .info-card--primary small {
+    color: rgb(255 255 255 / 0.8);
+  }
+  .info-card--primary .info-icon {
+    background: rgb(255 255 255 / 0.15);
+    color: #fff;
+    border-color: rgb(255 255 255 / 0.2);
+  }
+  .info-card :global(.info-arrow) {
+    margin-left: auto;
+    flex: none;
+  }
+  .contact-form {
+    padding: clamp(1.6rem, 4vw, 3rem);
+    display: grid;
+    gap: 1.3rem;
+  }
+  .contact-form h2 {
+    margin-bottom: 0.5rem;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+  .consent {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+  }
+  .consent input {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.2rem;
+    accent-color: var(--violet-500);
+    flex: none;
+  }
+  .consent a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .form-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-info {
+      position: static;
+    }
+  }
+  @media (max-width: 560px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

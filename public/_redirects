@@ -1,0 +1,6 @@
+# Redirections 301 des anciennes pages Webflow qui n'existent plus.
+# (Les pages conservées gardent exactement la même adresse.)
+
+/home-two                 /          301
+/template-info/*          /          301
+/project-categories/*     /projects  301

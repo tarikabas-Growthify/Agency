@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Prêt à transformer votre site en machine à clients ?',
+  text = 'Audit gratuit, appel de 30 minutes, sans engagement. On identifie ensemble vos leviers de croissance prioritaires.',
+} = Astro.props;
+---
+
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-box" data-reveal>
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-symbol" aria-hidden="true" data-parallax="0.35">
+        <Logo variant="symbol" />
+      </div>
+      <p class="eyebrow">Parlons de votre projet</p>
+      <h2 class="display-2" data-split="words">{title}</h2>
+      <p class="lead">{text}</p>
+      <div class="cta-actions">
+        <a href={site.calendly} target="_blank" rel="noopener" class="btn btn--gradient" data-magnetic data-cursor-text="Réserver">
+          Réserver un appel <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span>
+        </a>
+        <a href="/contact-us" class="btn btn--ghost" data-magnetic>Nous écrire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-box {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(3rem, 8vw, 6.5rem) clamp(1.5rem, 6vw, 5.5rem);
+    border-radius: calc(var(--radius) * 1.6);
+    border: 1px solid var(--line-strong);
+    background: linear-gradient(140deg, var(--ink-800), var(--ink-900) 60%);
+  }
+  .cta-glow {
+    position: absolute;
+    inset: -40%;
+    z-index: -1;
+    background: conic-gradient(from 0deg at 70% 50%, transparent 0deg, rgb(255 77 154 / 0.35) 60deg, rgb(109 76 250 / 0.5) 140deg, transparent 220deg);
+    filter: blur(70px);
+    animation: cta-spin 14s linear infinite;
+  }
+  @keyframes cta-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .cta-symbol {
+    position: absolute;
+    right: -4%;
+    bottom: -18%;
+    z-index: -1;
+    font-size: clamp(10rem, 26vw, 22rem);
+    opacity: 0.08;
+  }
+  .cta-box h2 {
+    max-width: 16ch;
+  }
+  .cta-box .lead {
+    margin-top: 1.4rem;
+    max-width: 52ch;
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.4rem;
+  }
+</style>

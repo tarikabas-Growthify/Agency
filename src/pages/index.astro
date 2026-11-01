@@ -1,0 +1,838 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
+import ClientMarquee from '../components/ClientMarquee.astro';
+import ProjectStack from '../components/ProjectStack.astro';
+import Process from '../components/Process.astro';
+import Testimonials from '../components/Testimonials.astro';
+import PostCard from '../components/PostCard.astro';
+import CTA from '../components/CTA.astro';
+import { site, stats, strengths, pillars } from '../data/site';
+
+import heroTeam from '../assets/images/hero/team.webp';
+import heroEntrepreneur from '../assets/images/hero/entrepreneur.webp';
+import heroHologram from '../assets/images/hero/hologram.webp';
+import heroDashboard from '../assets/images/hero/dashboard.webp';
+import balloon from '../assets/images/decor/balloon.png';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+
+const heroCards = [
+  { src: heroTeam, alt: "L'équipe Growthify en réunion devant un tableau de bord de croissance" },
+  { src: heroEntrepreneur, alt: 'Une entrepreneuse analyse un graphique de croissance holographique' },
+  { src: heroHologram, alt: 'Un tunnel de conversion et des données SEO, UX et CRO en hologramme' },
+  { src: heroDashboard, alt: 'Un écran affichant un tableau de bord SEO et un tunnel de conversion' },
+];
+
+const steps = [
+  { title: 'Audit et cadrage', text: "On analyse votre site, votre marché et vos données pour identifier ce qui freine votre croissance, puis on définit des objectifs clairs et mesurables." },
+  { title: 'Stratégie et design', text: 'On conçoit les parcours et les maquettes Figma, pensés pour le SEO et la conversion. Vous validez un design réaliste avant la moindre ligne de code.' },
+  { title: 'Développement et lancement', text: "On développe un site rapide et propre (Shopify, Webflow, WordPress ou sur-mesure), on teste tout sur chaque appareil, puis on met en ligne." },
+  { title: 'Mesure et croissance', text: "On ne livre pas un site pour disparaître : on mesure, on teste, on améliore. Chaque mois, vous savez ce que votre site a rapporté." },
+];
+---
+
+<Base title={site.title} description={site.description}>
+  <!-- ============ HERO ============ -->
+  <section class="hero" data-hero>
+    <div class="aurora" aria-hidden="true"><span data-depth="0.05"></span><span data-depth="-0.06"></span><span data-depth="0.03"></span></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="hero-symbol" aria-hidden="true" data-depth="-0.02"><Logo variant="symbol" /></div>
+
+    <div class="container hero-grid" data-hero-content>
+      <div class="hero-copy">
+        <p class="hero-badge" data-reveal>
+          <span class="dot"></span> Agence digitale à Paris · Audit gratuit
+        </p>
+        <h1 class="display-1 hero-title">
+          <span class="mask"><span class="text-gradient" data-mask-up>Growthify,</span></span>
+          <span data-split="words">l'agence digitale pilote de votre croissance.</span>
+        </h1>
+        <p class="lead hero-lead" data-reveal>
+          Que vous vendiez en ligne ou que vous fassiez grandir un SaaS, nous concevons, développons et optimisons votre produit pour qu'il génère des résultats mesurables.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a href={site.calendly} target="_blank" rel="noopener" class="btn btn--gradient" data-magnetic data-cursor-text="Réserver">
+            Parlez à un expert <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span>
+          </a>
+          <a href="/projects" class="btn btn--ghost" data-magnetic>Nos réalisations</a>
+        </div>
+        <ul class="hero-stats" data-reveal-stagger>
+          {
+            stats.map((s) => (
+              <li>
+                <strong>
+                  <span data-counter={s.value}>{s.value}</span>
+                  {s.suffix}
+                </strong>
+                <span>{s.label}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-label="Aperçu de nos projets" role="img">
+        <div class="hero-cards" data-depth="0.025">
+          {
+            heroCards.map((c, i) => (
+              <div class="hero-card" data-hero-card>
+                <Image src={c.src} alt={c.alt} width={560} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} />
+              </div>
+            ))
+          }
+        </div>
+        <div class="hero-chips" data-reveal-stagger>
+          {
+            [
+              { c: 'c1', d: 0.08, icon: 'seo', label: 'SEO' },
+              { c: 'c2', d: -0.07, icon: 'cro', label: 'CRO' },
+              { c: 'c3', d: 0.06, icon: 'design', label: 'UX/UI' },
+              { c: 'c4', d: -0.05, icon: 'growth', label: 'Growth' },
+            ].map((chip) => (
+              <span class:list={['hero-chip-pos', chip.c]}>
+                <span data-depth={chip.d}>
+                  <span class="chip hero-chip" data-float>
+                    <Icon name={chip.icon} size={16} /> {chip.label}
+                  </span>
+                </span>
+              </span>
+            ))
+          }
+        </div>
+        <div class="hero-balloon" data-depth="0.1">
+          <div data-float><Image src={balloon} alt="" width={140} /></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#manifeste" class="scroll-hint" aria-label="Défiler vers la suite">
+      <span></span>
+    </a>
+  </section>
+
+  <ClientMarquee />
+
+  <!-- ============ MANIFESTE ============ -->
+  <section class="section manifesto" id="manifeste">
+    <div class="container">
+      <p class="eyebrow" data-reveal>Qui sommes-nous ?</p>
+      <p class="manifesto-text" data-scrub-words>
+        Chez Growthify, on a fait un constat simple : la majorité des sites web ne servent à rien. Beaucoup sont beaux, certains sont rapides, peu génèrent réellement du chiffre d'affaires. Nous construisons des sites qui vendent.
+      </p>
+      <div class="manifesto-grid">
+        <div class="manifesto-copy" data-reveal>
+          <p class="lead">
+            Basée à Paris, notre agence accompagne deux types de clients : les e-commerçants et PME qui veulent une boutique en ligne qui vend, et les fondateurs de SaaS et d'applications mobiles qui veulent structurer leur croissance.
+          </p>
+          <p class="muted">
+            On ne livre pas un site pour disparaître ensuite. On construit un système de croissance, on le mesure, on l'améliore. Parce qu'un site qui ne génère pas de revenus, c'est juste un coût.
+          </p>
+          <a href="/about-us" class="link-arrow">Découvrir l'agence <Icon name="arrow" size={18} /></a>
+        </div>
+        <ol class="pillars" data-reveal-stagger>
+          {
+            pillars.map((p, i) => (
+              <li class="pillar card" data-tilt="6">
+                <span class="pillar-num">0{i + 1}</span>
+                <h3>{p.title}</h3>
+                <p class="muted">{p.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES (défilement horizontal) ============ -->
+  <section class="services-h" data-hscroll>
+    <div class="container services-h-head">
+      <div>
+        <p class="eyebrow" data-reveal>Nos expertises</p>
+        <h2 class="display-2" data-split="words">Tout ce qu'il faut pour faire grandir votre business.</h2>
+      </div>
+      <a href="/services" class="btn btn--ghost" data-magnetic>Tous nos services</a>
+    </div>
+    <div class="services-h-track" data-hscroll-track>
+      {
+        services.map((s, i) => (
+          <a href={`/services/${s.id}`} class="service-card card" data-cursor-text="Découvrir">
+            <span class="service-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="service-icon" data-draw-icon>
+              <Icon name={s.data.icon} size={34} />
+            </span>
+            <h3>{s.data.title}</h3>
+            <p class="muted">{s.data.short}</p>
+            <span class="service-go">
+              <Icon name="arrow-up-right" size={20} />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+    <div class="container"><div class="hbar"><span data-hscroll-bar></span></div></div>
+  </section>
+
+  <!-- ============ POURQUOI NOUS ============ -->
+  <section class="section why">
+    <div class="container why-grid">
+      <div class="why-media">
+        <div class="why-img" data-img-reveal>
+          <Image src={heroTeam} alt="L'équipe Growthify au travail" width={700} loading="lazy" />
+        </div>
+        <div class="why-badge card" data-parallax="0.4">
+          <strong><span class="why-num" data-counter="8">8</span></strong>
+          <span>années d'expérience</span>
+        </div>
+      </div>
+      <div class="why-copy">
+        <p class="eyebrow" data-reveal>Pourquoi Growthify ?</p>
+        <h2 class="display-2" data-split="words">Plus qu'une agence, un partenaire de croissance.</h2>
+        <p class="lead" data-reveal>
+          La plupart des agences livrent un site puis disparaissent. Le développeur ne parle pas au designer, le designer ne parle pas au marketeur. Résultat : un produit déconnecté de vos objectifs.
+        </p>
+        <p class="muted" data-reveal>
+          Chez Growthify, on ne sépare jamais le développement, le design et l'acquisition. On fusionne ces trois piliers, parce que c'est la seule façon de générer des résultats mesurables.
+        </p>
+        <ul class="strengths" data-reveal-stagger>
+          {
+            strengths.map((s) => (
+              <li>
+                <span class="check" data-draw-icon>
+                  <Icon name="check" size={16} />
+                </span>
+                {s}
+              </li>
+            ))
+          }
+        </ul>
+        <a href="/contact-us" class="btn" data-magnetic>Nous contacter <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RÉALISATIONS ============ -->
+  <section class="section work">
+    <div class="container">
+      <div class="section-head work-head">
+        <div>
+          <p class="eyebrow" data-reveal>Études de cas</p>
+          <h2 class="display-2" data-split="words">Nos réalisations : l'agence digitale en action.</h2>
+        </div>
+        <p class="lead" data-reveal>
+          De la boutique Shopify à l'application mobile lancée avec sa stratégie go-to-market, découvrez quelques projets réalisés par notre équipe.
+        </p>
+      </div>
+      <ProjectStack projects={projects} />
+      <div class="work-more" data-reveal>
+        <a href="/projects" class="btn btn--ghost" data-magnetic>Tout le portfolio <span class="btn-icon"><Icon name="arrow" size={16} /></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANDEAU TEXTE ============ -->
+  <section class="big-marquee" aria-hidden="true">
+    <div data-marquee data-marquee-duration="40">
+      <div class="big-marquee-track" data-marquee-track>
+        {
+          Array.from({ length: 4 }).map(() => (
+            <span>
+              Développement <i>✦</i> Design <i>✦</i> SEO <i>✦</i> CRO <i>✦</i> Growth <i>✦</i>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <div data-marquee="reverse" data-marquee-duration="46">
+      <div class="big-marquee-track outline" data-marquee-track>
+        {
+          Array.from({ length: 4 }).map(() => (
+            <span>
+              Shopify <i>✦</i> Webflow <i>✦</i> WordPress <i>✦</i> Figma <i>✦</i> IA <i>✦</i>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Process steps={steps} />
+
+  <Testimonials />
+
+  <!-- ============ BLOG ============ -->
+  <section class="section blog-teaser">
+    <div class="container">
+      <div class="section-head work-head">
+        <div>
+          <p class="eyebrow" data-reveal>Blog</p>
+          <h2 class="display-2" data-split="words">Nos dernières analyses tech, growth et marketing.</h2>
+        </div>
+        <a href="/blog" class="btn btn--ghost" data-magnetic>Tous les articles</a>
+      </div>
+      <div class="posts" data-reveal-stagger>
+        {posts.map((p) => <PostCard post={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</Base>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-h) + 3rem);
+    padding-bottom: 5rem;
+    overflow: hidden;
+  }
+  .hero-symbol {
+    position: absolute;
+    right: -12vw;
+    top: 50%;
+    translate: 0 -50%;
+    font-size: min(56vw, 760px);
+    color: rgb(255 255 255 / 0.025);
+    pointer-events: none;
+  }
+  .hero-symbol :global(svg) {
+    animation: spin-slow 80s linear infinite;
+  }
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1rem 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgb(255 255 255 / 0.04);
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-bottom: 2rem;
+  }
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3ee6a5;
+    box-shadow: 0 0 0 0 rgb(62 230 165 / 0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    70% {
+      box-shadow: 0 0 0 10px rgb(62 230 165 / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgb(62 230 165 / 0);
+    }
+  }
+  .hero-title {
+    display: grid;
+    gap: 0.05em;
+    font-size: clamp(2.7rem, 6.4vw, 6rem);
+  }
+  .hero-title .mask {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+  }
+  .hero-title .text-gradient {
+    display: inline-block;
+  }
+  .hero-lead {
+    margin-top: 1.8rem;
+    max-width: 52ch;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.4rem;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    list-style: none;
+    margin: 3.2rem 0 0;
+    padding: 1.8rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .hero-stats li {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .hero-stats strong {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .hero-stats li > span {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 520px;
+    width: 100%;
+    justify-self: center;
+  }
+  .hero-cards {
+    position: absolute;
+    inset: 10% 14% 14% 6%;
+  }
+  .hero-card {
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius) * 1.2);
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 40px 90px -25px rgb(0 0 0 / 0.75), 0 0 60px -20px rgb(109 76 250 / 0.5);
+    background: var(--ink-800);
+  }
+  .hero-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-chips {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hero-chip-pos {
+    position: absolute;
+  }
+  .hero-chip-pos > span {
+    display: block;
+  }
+  .hero-chip {
+    padding: 0.6rem 1rem;
+    background: rgb(16 23 59 / 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--text);
+    font-weight: 500;
+    box-shadow: 0 14px 40px -12px rgb(0 0 0 / 0.6);
+  }
+  .hero-chip :global(svg) {
+    color: var(--violet-300);
+  }
+  .c1 {
+    top: 4%;
+    left: 0;
+  }
+  .c2 {
+    top: 30%;
+    right: 0;
+  }
+  .c3 {
+    bottom: 10%;
+    left: -4%;
+  }
+  .c4 {
+    bottom: 2%;
+    right: 12%;
+  }
+  .hero-balloon {
+    position: absolute;
+    top: -12%;
+    right: -4%;
+    width: clamp(70px, 9vw, 120px);
+    pointer-events: none;
+  }
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 1.8rem;
+    translate: -50% 0;
+    width: 26px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+  }
+  .scroll-hint span {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 3px;
+    height: 8px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: var(--text);
+    animation: scroll-hint 1.8s var(--ease) infinite;
+  }
+  @keyframes scroll-hint {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(14px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* ---------- Manifeste ---------- */
+  .manifesto-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.4vw, 3.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    font-weight: 550;
+    max-width: 22ch;
+    max-width: 1100px;
+  }
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    margin-top: clamp(3.5rem, 8vw, 6rem);
+    align-items: start;
+  }
+  .manifesto-copy {
+    display: grid;
+    gap: 1.4rem;
+    align-content: start;
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+  .pillars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .pillar {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.4rem;
+    row-gap: 0.4rem;
+  }
+  .pillar-num {
+    grid-row: span 2;
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    line-height: 1;
+    font-weight: 600;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .pillar h3 {
+    font-size: 1.45rem;
+  }
+
+  /* ---------- Services horizontaux ---------- */
+  .services-h {
+    position: relative;
+    padding-block: clamp(5rem, 10vw, 7rem);
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgb(109 76 250 / 0.12), transparent);
+  }
+  .services-h-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .services-h-head h2 {
+    max-width: 15ch;
+  }
+  .services-h-track {
+    display: flex;
+    gap: 1.2rem;
+    padding-inline: max(var(--gutter), (100vw - var(--container)) / 2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .services-h-track::-webkit-scrollbar {
+    display: none;
+  }
+  .service-card {
+    flex: none;
+    width: clamp(280px, 30vw, 400px);
+    min-height: clamp(360px, 34vw, 440px);
+    padding: clamp(1.6rem, 2.5vw, 2.2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    scroll-snap-align: start;
+    transition: border-color 0.4s, transform 0.6s var(--ease);
+  }
+  .service-card:hover {
+    border-color: rgb(139 112 255 / 0.5);
+  }
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .service-icon {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    margin: 0.6rem 0 auto;
+    background: var(--gradient-soft);
+    border: 1px solid var(--line-strong);
+    color: var(--violet-300);
+    transition: transform 0.6s var(--ease), background 0.4s;
+  }
+  .service-card:hover .service-icon {
+    transform: rotate(-8deg) scale(1.08);
+    background: var(--gradient);
+    color: #fff;
+  }
+  .service-card h3 {
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    margin-top: 2rem;
+  }
+  .service-go {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    margin-top: 0.4rem;
+    transition: background 0.4s, transform 0.5s var(--ease);
+  }
+  .service-card:hover .service-go {
+    background: var(--text);
+    color: var(--ink-950);
+    transform: rotate(45deg);
+  }
+  .hbar {
+    height: 1px;
+    background: var(--line-strong);
+    margin-top: 3rem;
+  }
+  .hbar span {
+    display: block;
+    height: 100%;
+    background: var(--gradient);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+  @media (min-width: 1024px) {
+    .services-h {
+      height: 100vh;
+      min-height: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .services-h-track {
+      overflow: visible;
+    }
+  }
+
+  /* ---------- Pourquoi nous ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2.5rem, 7vw, 6rem);
+    align-items: center;
+  }
+  .why-media {
+    position: relative;
+  }
+  .why-img {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+  .why-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .why-badge {
+    position: absolute;
+    right: -1.5rem;
+    bottom: 10%;
+    padding: 1.5rem 1.8rem;
+    display: grid;
+    background: rgb(16 23 59 / 0.96);
+    box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.6);
+  }
+  .why-badge strong {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 650;
+  }
+  .why-num {
+    display: inline-block;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .why-badge > span {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+  }
+  .why-copy {
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+  }
+  .why-copy .eyebrow {
+    margin-bottom: 0;
+  }
+  .strengths {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .strengths li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+  }
+  .check {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: #fff;
+  }
+
+  /* ---------- Réalisations ---------- */
+  .work-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem 4rem;
+    max-width: none;
+    flex-wrap: wrap;
+  }
+  .work-head h2 {
+    max-width: 15ch;
+  }
+  .work-head .lead {
+    max-width: 42ch;
+    margin: 0;
+  }
+  .work-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  /* ---------- Grand bandeau ---------- */
+  .big-marquee {
+    padding-block: clamp(2rem, 5vw, 4rem);
+    overflow: hidden;
+    border-block: 1px solid var(--line);
+  }
+  .big-marquee-track {
+    display: flex;
+    width: max-content;
+  }
+  .big-marquee-track span {
+    flex: none;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    padding-right: 0.4em;
+    white-space: nowrap;
+  }
+  .big-marquee-track i {
+    font-style: normal;
+    font-size: 0.5em;
+    vertical-align: middle;
+    color: var(--violet-400);
+    margin-inline: 0.3em;
+  }
+  .big-marquee-track.outline span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.25);
+  }
+
+  /* ---------- Blog ---------- */
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-grid,
+    .manifesto-grid,
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-visual {
+      max-width: 440px;
+      margin-top: 1rem;
+    }
+    .manifesto-copy {
+      position: static;
+    }
+    .services-h-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .posts {
+      grid-template-columns: 1fr 1fr;
+    }
+    .why-badge {
+      right: 1rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .posts {
+      grid-template-columns: 1fr;
+    }
+    .hero-stats {
+      gap: 1.4rem 2rem;
+    }
+    .scroll-hint {
+      display: none;
+    }
+  }
+</style>

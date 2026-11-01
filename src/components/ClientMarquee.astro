@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import { clients } from '../data/site';
+// La liste est répétée pour que la boucle soit continue (la piste défile de 50 %).
+const loop = [...clients, ...clients, ...clients, ...clients];
+// Hauteur calculée pour que chaque logo ait à peu près la même surface visuelle
+// (un logo très allongé comme Carven doit être moins haut qu'un logo carré comme TF1).
+const heightFor = (w: number, h: number) => Math.round(Math.min(36, Math.sqrt(3400 / (w / h))));
+---
+
+<section class="clients" aria-label="Ils nous font confiance">
+  <div class="container clients-head">
+    <p>Ils nous ont fait confiance</p>
+  </div>
+  <div class="marquee" data-marquee data-marquee-duration="32">
+    <div class="marquee-track" data-marquee-track>
+      {
+        loop.map((c, i) => (
+          <div class="marquee-item" aria-hidden={i >= clients.length ? 'true' : undefined}>
+            <Image
+              src={c.logo}
+              alt={i < clients.length ? c.name : ''}
+              height={heightFor(c.logo.width, c.logo.height) * 2}
+              style={`height: ${heightFor(c.logo.width, c.logo.height)}px`}
+              loading="lazy"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+    border-block: 1px solid var(--line);
+  }
+  .clients-head p {
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+  }
+  .marquee-item {
+    flex: none;
+    display: grid;
+    place-items: center;
+    padding-inline: clamp(2rem, 5vw, 4rem);
+    height: 48px;
+  }
+  .marquee-item img {
+    width: auto;
+    opacity: 0.6;
+    transition: opacity 0.4s;
+  }
+  .marquee-item:hover img {
+    opacity: 1;
+  }
+  :global(html:not(.motion)) .marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+</style>

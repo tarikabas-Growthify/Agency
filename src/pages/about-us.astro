@@ -1,0 +1,258 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ClientMarquee from '../components/ClientMarquee.astro';
+import Testimonials from '../components/Testimonials.astro';
+import PostCard from '../components/PostCard.astro';
+import CTA from '../components/CTA.astro';
+import { stats, team } from '../data/site';
+import desk from '../assets/images/hero/hologram.webp';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const values = [
+  {
+    title: 'Notre mission et notre vision',
+    text: "Notre vision : devenir l'agence digitale parisienne synonyme de « croissance ». Notre mission : prouver que le digital n'est pas un centre de coût, mais votre plus puissant levier de revenu. Nous fusionnons la donnée (SEO, CRO) et le design (UX) pour livrer un succès mesurable.",
+  },
+  {
+    title: "Engagement d'excellence",
+    text: "La performance est au cœur de tout ce que nous faisons. Avec une équipe qui vit pour les dernières tendances SEO et CRO, nous veillons à ce que votre marque reste pertinente, compétitive et leader sur son marché. Rester en tête exige une agence qui captive, engage et convertit : c'est notre engagement.",
+  },
+];
+---
+
+<Base
+  title="À propos : l'agence growth nouvelle génération | Growthify"
+  description="Growthify, agence digitale à Paris obsédée par la performance : 7 experts en développement web, SEO, CRO et design UX/UI au service de votre croissance."
+  breadcrumbs={[{ name: 'À propos', href: '/about-us' }]}
+>
+  <PageHero
+    eyebrow="À propos"
+    title="Nous ne livrons pas que des livrables. Nous livrons des résultats."
+    lead="Oubliez les « jolies » agences. Nous sommes obsédés par la performance et votre retour sur investissement. Growthify, l'agence growth nouvelle génération."
+    crumbs={[{ name: 'À propos', href: '/about-us' }]}
+  />
+
+  <section class="section">
+    <div class="container story">
+      <div class="story-img" data-img-reveal>
+        <Image src={desk} alt="Analyse de données SEO, UX et CRO" width={700} loading="lazy" />
+      </div>
+      <div class="story-copy">
+        <p class="eyebrow" data-reveal>Qui sommes-nous ?</p>
+        <h2 class="display-3" data-split="words">Une agence de croissance avant-gardiste, basée à Paris.</h2>
+        <p class="lead" data-reveal>
+          Chez Growthify, nous sommes passionnés par la transformation de vos objectifs en performance mesurable. Nous sommes spécialisés dans les solutions qui convertissent : stratégies SEO ambitieuses, optimisation CRO chirurgicale et développement web ultra-rapide.
+        </p>
+        <p class="muted" data-reveal>
+          Notre force, c'est notre équipe de 7 spécialistes. Pas des généralistes : chacun est expert d'un pilier de la performance. Des développeurs obsédés par la vitesse, des stratèges SEO qui visent la première place sur Google, des analystes CRO qui transforment vos clics en clients et des designers UX/UI qui rendent la conversion intuitive.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight stats-band">
+    <div class="container">
+      <ul class="stats" data-reveal-stagger>
+        {
+          stats.map((s) => (
+            <li>
+              <strong>
+                <span data-counter={s.value}>{s.value}</span>
+                <span class="text-gradient">{s.suffix}</span>
+              </strong>
+              <span>{s.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Nos fondations</p>
+        <h2 class="display-2" data-split="words">Les fondations de votre croissance.</h2>
+      </div>
+      <div class="values" data-reveal-stagger>
+        {
+          values.map((v, i) => (
+            <article class="value card" data-tilt="4">
+              <span class="value-num">0{i + 1}</span>
+              <h3>{v.title}</h3>
+              <p class="muted">{v.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section team-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Notre équipe</p>
+        <h2 class="display-2" data-split="words">Des experts dédiés à votre croissance digitale.</h2>
+      </div>
+      <ul class="team" data-reveal-stagger>
+        {
+          team.map((m) => (
+            <li class="member">
+              <div class="member-photo" data-tilt="6">
+                <Image src={m.photo} alt={`Portrait de ${m.name}, ${m.role}`} widths={[360, 600]} sizes="(max-width: 700px) 90vw, 360px" loading="lazy" />
+              </div>
+              <h3>{m.name}</h3>
+              <p class="muted">{m.role}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <ClientMarquee />
+  <Testimonials />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Blog</p>
+        <h2 class="display-3" data-split="words">Nos dernières analyses.</h2>
+      </div>
+      <div class="posts" data-reveal-stagger>{posts.map((p) => <PostCard post={p} />)}</div>
+    </div>
+  </section>
+
+  <CTA />
+</Base>
+
+<style>
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 7vw, 6rem);
+    align-items: center;
+  }
+  .story-img {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+  .story-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .story-copy {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .story-copy .eyebrow {
+    margin: 0;
+  }
+  .stats-band {
+    border-block: 1px solid var(--line);
+    background: radial-gradient(ellipse 60% 100% at 50% 50%, rgb(109 76 250 / 0.12), transparent);
+  }
+  .stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .stats li {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .stats strong {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+  .stats li > span {
+    color: var(--muted);
+  }
+  .values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .value {
+    padding: clamp(1.8rem, 4vw, 3rem);
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .value-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 650;
+    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .value h3 {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+  }
+  .team {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+  .member-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--line);
+    margin-bottom: 1.3rem;
+  }
+  .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.4);
+    transition: filter 0.6s, transform 1s var(--ease);
+  }
+  .member:hover .member-photo img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  }
+  .member h3 {
+    font-size: 1.5rem;
+  }
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (max-width: 900px) {
+    .story,
+    .values {
+      grid-template-columns: 1fr;
+    }
+    .team,
+    .posts {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .stats,
+    .team,
+    .posts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

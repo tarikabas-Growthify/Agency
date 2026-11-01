@@ -1,0 +1,68 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { site } from '../data/site';
+---
+
+<Legal
+  title="Mentions légales | Growthify, agence digitale à Paris"
+  description="Mentions légales du site growthify.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles."
+  heading="Mentions légales"
+  path="/mentions-legales"
+  updated="novembre 2026"
+>
+  <h2>1. Éditeur du site</h2>
+  <p>
+    Le présent site est édité par <strong>GROWTHIFY</strong>, SAS immatriculée au RCS de Créteil sous le numéro 988 547 790, dont le siège social est situé au
+    {site.address.street}, {site.address.postalCode} {site.address.city}, France.
+  </p>
+  <p>Numéro de TVA intracommunautaire : {site.legal.vat}</p>
+  <p>E-mail de contact : <a href={`mailto:${site.email}`}>{site.email}</a><br />Site web : <a href={site.url}>www.growthify.fr</a></p>
+  <p>Directrice de la publication et responsable de la rédaction : Khawla Saoualif.</p>
+
+  <h2>2. Hébergement</h2>
+  <p>
+    Le site est hébergé par <strong>Cloudflare, Inc.</strong> (service Cloudflare Pages), 101 Townsend St, San Francisco, CA 94107, États-Unis.
+    Site : <a href="https://www.cloudflare.com" rel="noopener">www.cloudflare.com</a>
+  </p>
+
+  <h2>3. Propriété intellectuelle</h2>
+  <p>
+    L'ensemble des éléments présents sur le site (textes, images, illustrations, graphismes, logos, vidéos, structure, bases de données, design et code) sont la propriété exclusive de
+    <strong>GROWTHIFY</strong>, sauf indication contraire.
+  </p>
+  <p>
+    Toute reproduction, représentation, modification, publication, transmission ou adaptation, intégrale ou partielle, du site ou de son contenu, par quelque procédé que ce soit, sans l'accord écrit
+    préalable de GROWTHIFY, est strictement interdite et constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.
+  </p>
+
+  <h2>4. Responsabilité</h2>
+  <p>GROWTHIFY met tout en œuvre pour fournir des informations exactes et à jour. Toutefois, l'éditeur ne saurait être tenu responsable :</p>
+  <ul>
+    <li>d'erreurs, d'omissions ou d'inexactitudes ;</li>
+    <li>d'une indisponibilité du site ;</li>
+    <li>de tout dommage résultant de l'utilisation du site.</li>
+  </ul>
+  <p>L'utilisateur reconnaît utiliser le site sous sa responsabilité exclusive.</p>
+
+  <h2>5. Données personnelles</h2>
+  <p>
+    GROWTHIFY collecte et traite des données personnelles conformément au <strong>Règlement général sur la protection des données (RGPD)</strong> et à la loi française « Informatique et Libertés ».
+    Pour en savoir plus, consultez notre <a href="/privacy-policy">politique de confidentialité</a>.
+  </p>
+  <p>Vous pouvez exercer vos droits (accès, rectification, suppression, opposition) en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+  <h2>6. Cookies</h2>
+  <p>
+    Ce site n'utilise pas de cookies publicitaires ni de mesure d'audience. Seuls des éléments strictement nécessaires à son fonctionnement et à sa sécurité (protection anti-robots des
+    formulaires) peuvent être utilisés. Ils ne nécessitent pas votre consentement.
+  </p>
+
+  <h2>7. Liens externes</h2>
+  <p>Le site peut contenir des liens vers d'autres sites. GROWTHIFY ne peut être tenue responsable du contenu ou du fonctionnement de ces sites tiers.</p>
+
+  <h2>8. Droit applicable</h2>
+  <p>
+    Les présentes mentions légales sont régies par le droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux compétents seront ceux du ressort du siège social de
+    GROWTHIFY.
+  </p>
+</Legal>

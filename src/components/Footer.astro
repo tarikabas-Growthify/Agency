@@ -1,0 +1,261 @@
+---
+import { getCollection } from 'astro:content';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import Turnstile from './Turnstile.astro';
+import { site, nav } from '../data/site';
+import { wordmark } from '../data/logo';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-intro" data-reveal>
+        <Logo class="footer-logo" />
+        <p class="footer-tagline">
+          Passez d'un simple site web à une <span class="text-gradient">véritable machine à clients</span>.
+        </p>
+      </div>
+
+      <form class="newsletter card" action="/api/newsletter" method="post" data-form data-reveal>
+        <label for="newsletter-email" class="newsletter-title">Newsletter</label>
+        <p class="muted">Des stratégies concrètes, des conseils actionnables et des astuces growth pour booster votre business.</p>
+        <div class="newsletter-row">
+          <input id="newsletter-email" type="email" name="email" required placeholder="Votre e-mail" autocomplete="email" />
+          <button class="btn btn--gradient btn--sm" type="submit">S'inscrire</button>
+        </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+        <Turnstile />
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="footer-cols">
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <ul>
+          {services.map((s) => <li><a href={`/services/${s.id}`}>{s.data.title}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul class="footer-contact">
+          <li><a href={`mailto:${site.email}`}><Icon name="mail" size={18} />{site.email}</a></li>
+          <li><a href={site.phoneHref}><Icon name="phone" size={18} />{site.phone}</a></li>
+          <li><a href={site.calendly} target="_blank" rel="noopener"><Icon name="calendar" size={18} />Réserver un appel</a></li>
+          <li><span><Icon name="pin" size={18} />{site.address.city}, {site.address.region}</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Légal</h3>
+        <ul>
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+          <li><a href="/privacy-policy">Politique de confidentialité</a></li>
+        </ul>
+        <div class="footer-socials">
+          <a href={site.socials.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn de Growthify" data-magnetic><Icon name="linkedin" /></a>
+          <a href={site.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram de Growthify" data-magnetic><Icon name="instagram" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {year} Growthify. Tous droits réservés.</p>
+      <a href={site.osUrl} rel="nofollow" class="footer-login"><Icon name="login" size={15} />Connexion</a>
+    </div>
+  </div>
+
+  <div class="footer-giant" aria-hidden="true" data-footer-giant>
+    <svg viewBox={wordmark.viewBox} preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <linearGradient id="footer-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#8b70ff" stop-opacity="0.55"></stop>
+          <stop offset="1" stop-color="#8b70ff" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      <path fill="url(#footer-grad)" fill-rule="evenodd" d={wordmark.d}></path>
+    </svg>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    padding-top: clamp(4rem, 8vw, 6rem);
+    border-top: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--ink-950), var(--ink-900));
+    overflow: hidden;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: end;
+    padding-bottom: clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+  :global(.footer-logo) {
+    font-size: 1.15rem;
+    margin-bottom: 1.8rem;
+  }
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    max-width: 16ch;
+  }
+  .newsletter {
+    padding: clamp(1.4rem, 3vw, 2rem);
+    display: grid;
+    gap: 0.8rem;
+  }
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+  .newsletter p.muted {
+    font-size: 0.95rem;
+  }
+  .newsletter-row {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgb(255 255 255 / 0.03);
+    margin-top: 0.4rem;
+  }
+  .newsletter-row input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 0 1rem;
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding-block: clamp(3rem, 6vw, 4rem);
+  }
+  .footer-cols h3 {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .footer-cols ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+  .footer-cols a,
+  .footer-cols span {
+    color: var(--text-soft);
+    font-size: 0.97rem;
+    transition: color 0.3s;
+  }
+  .footer-cols a:hover {
+    color: var(--text);
+  }
+  .footer-contact a,
+  .footer-contact span {
+    display: inline-flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.6rem;
+  }
+  .footer-socials a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .footer-socials a:hover {
+    background: var(--violet-500);
+    border-color: var(--violet-500);
+    color: #fff;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .footer-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .footer-login:hover {
+    opacity: 1;
+    color: var(--text);
+  }
+  .footer-giant {
+    width: min(100% - 2 * var(--gutter), 1500px);
+    margin: 1rem auto 0;
+    pointer-events: none;
+  }
+  .footer-giant svg {
+    width: 100%;
+  }
+  @media (max-width: 900px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+    }
+    .footer-cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .footer-cols {
+      grid-template-columns: 1fr;
+    }
+    .newsletter-row {
+      flex-direction: column;
+      border-radius: var(--radius-sm);
+    }
+    .newsletter-row input {
+      padding: 0.8rem 1rem;
+    }
+  }
+</style>

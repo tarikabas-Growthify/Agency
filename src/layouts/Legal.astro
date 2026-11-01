@@ -1,0 +1,44 @@
+---
+import Base from './Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  path: string;
+  updated: string;
+}
+const { title, description, heading, path, updated } = Astro.props;
+---
+
+<Base title={title} description={description} breadcrumbs={[{ name: heading, href: path }]}>
+  <PageHero title={heading} lead={`Dernière mise à jour : ${updated}`} crumbs={[{ name: heading, href: path }]} />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="prose legal" data-reveal>
+        <slot />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal {
+    max-width: 78ch;
+  }
+  .legal :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.97rem;
+  }
+  .legal :global(th),
+  .legal :global(td) {
+    text-align: left;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .legal :global(th) {
+    color: var(--text);
+  }
+</style>

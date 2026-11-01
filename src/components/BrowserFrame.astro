@@ -1,0 +1,76 @@
+---
+// Cadre de navigateur dans lequel une capture d'écran pleine page défile.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  url?: string;
+  mode?: 'hover' | 'scroll';
+  height?: string;
+  eager?: boolean;
+}
+const { src, alt, url = 'growthify.fr', mode = 'hover', height = '440px', eager = false } = Astro.props;
+---
+
+<div class="browser" style={`--frame-h: ${height}`}>
+  <div class="browser-bar" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <div class="browser-url">{url}</div>
+  </div>
+  <div class="browser-screen" data-screen={mode}>
+    <Image src={src} alt={alt} widths={[640, 960, 1280]} sizes="(max-width: 900px) 92vw, 640px" loading={eager ? 'eager' : 'lazy'} />
+  </div>
+</div>
+
+<style>
+  .browser {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--ink-850);
+    box-shadow: 0 40px 100px -30px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(255 255 255 / 0.02);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: rgb(255 255 255 / 0.03);
+  }
+  .browser-bar > span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--line-strong);
+  }
+  .browser-bar > span:first-child {
+    background: #ff5f57;
+  }
+  .browser-bar > span:nth-child(2) {
+    background: #febc2e;
+  }
+  .browser-bar > span:nth-child(3) {
+    background: #28c840;
+  }
+  .browser-url {
+    margin-inline: auto;
+    padding: 0.25rem 1.2rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.05);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .browser-screen {
+    height: var(--frame-h);
+    overflow: hidden;
+    background: #fff;
+  }
+  .browser-screen img {
+    width: 100%;
+    height: auto;
+    will-change: transform;
+  }
+</style>

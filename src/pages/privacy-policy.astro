@@ -1,0 +1,110 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { site } from '../data/site';
+---
+
+<Legal
+  title="Politique de confidentialité | Growthify"
+  description="Comment Growthify collecte, utilise et protège vos données personnelles, conformément au RGPD."
+  heading="Politique de confidentialité"
+  path="/privacy-policy"
+  updated="novembre 2026"
+>
+  <h2>1. Préambule</h2>
+  <p>
+    La présente politique de confidentialité a pour objectif d'informer les utilisateurs du site <a href={site.url}>www.growthify.fr</a> de la manière dont <strong>GROWTHIFY</strong> collecte,
+    traite et protège leurs données personnelles, conformément au <strong>Règlement général sur la protection des données (RGPD)</strong> et à la <strong>loi Informatique et Libertés</strong>.
+  </p>
+
+  <h2>2. Responsable du traitement</h2>
+  <p>
+    <strong>GROWTHIFY</strong>, SAS immatriculée au RCS de Créteil sous le numéro <strong>988 547 790</strong><br />
+    Siège social : {site.address.street}, {site.address.postalCode} {site.address.city}, France<br />
+    E-mail : <a href={`mailto:${site.email}`}>{site.email}</a><br />
+    Responsable légal : <strong>Tarik Abas</strong>
+  </p>
+
+  <h2>3. Données personnelles collectées</h2>
+  <h3>3.1. Via les formulaires (contact, newsletter)</h3>
+  <ul>
+    <li>Nom et prénom</li>
+    <li>Adresse e-mail</li>
+    <li>Numéro de téléphone (facultatif)</li>
+    <li>Nom de l'entreprise (facultatif)</li>
+    <li>Votre message et le service qui vous intéresse</li>
+  </ul>
+  <h3>3.2. Via la navigation sur le site</h3>
+  <p>
+    Comme tout site web, notre hébergeur traite des données techniques (adresse IP, type de navigateur) pour afficher les pages et protéger le site contre les abus. Le site n'utilise ni
+    cookies publicitaires, ni outil de mesure d'audience.
+  </p>
+  <h3>3.3. Dans le cadre de nos prestations</h3>
+  <ul>
+    <li>Informations nécessaires à la réalisation des projets</li>
+    <li>Contenus fournis par les clients</li>
+    <li>Identifiants techniques</li>
+  </ul>
+
+  <h2>4. Finalités</h2>
+  <ul>
+    <li>Répondre à vos demandes de contact ou de devis</li>
+    <li>Gérer la relation commerciale</li>
+    <li>Vous envoyer notre newsletter, si vous vous y êtes inscrit</li>
+    <li>Exécuter nos obligations contractuelles</li>
+    <li>Assurer la sécurité du site</li>
+  </ul>
+
+  <h2>5. Base juridique</h2>
+  <ul>
+    <li><strong>Votre consentement</strong> (formulaires, newsletter)</li>
+    <li><strong>L'exécution d'un contrat</strong> (projets clients, prestations)</li>
+    <li><strong>L'intérêt légitime</strong> (sécurité du site)</li>
+    <li><strong>Les obligations légales</strong> (obligations fiscales et comptables)</li>
+  </ul>
+
+  <h2>6. Destinataires des données</h2>
+  <p>Vos données sont destinées à l'équipe de Growthify et à nos sous-traitants techniques, uniquement pour les finalités ci-dessus :</p>
+  <ul>
+    <li><strong>Cloudflare</strong> : hébergement du site et protection anti-robots des formulaires (Turnstile) ;</li>
+    <li><strong>Brevo</strong> : envoi des e-mails liés à vos demandes et gestion de la newsletter.</li>
+  </ul>
+  <p><strong>Aucune donnée n'est vendue ou cédée à des tiers.</strong></p>
+
+  <h2>7. Durée de conservation</h2>
+  <table>
+    <thead>
+      <tr><th>Type de données</th><th>Durée</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Demandes de contact</td><td>3 ans après le dernier échange</td></tr>
+      <tr><td>Données clients</td><td>Durée du contrat + 5 ans</td></tr>
+      <tr><td>Inscription à la newsletter</td><td>Jusqu'au désabonnement</td></tr>
+    </tbody>
+  </table>
+
+  <h2>8. Vos droits</h2>
+  <p>Vous disposez des droits suivants :</p>
+  <ul>
+    <li>droit d'accès, de rectification et d'effacement ;</li>
+    <li>droit d'opposition et de limitation du traitement ;</li>
+    <li>droit à la portabilité ;</li>
+    <li>droit de retirer votre consentement à tout moment ;</li>
+    <li>droit d'introduire une réclamation auprès de la CNIL.</li>
+  </ul>
+  <p>Pour exercer vos droits, écrivez à <a href={`mailto:${site.email}`}>{site.email}</a>. Chaque e-mail de la newsletter contient aussi un lien de désinscription.</p>
+
+  <h2>9. Sécurité</h2>
+  <p>Nous mettons en œuvre les mesures techniques et organisationnelles nécessaires pour protéger vos données : hébergement sécurisé, HTTPS, accès restreints et sauvegardes.</p>
+
+  <h2>10. Transferts hors Union européenne</h2>
+  <p>
+    Certains de nos sous-traitants peuvent traiter des données hors de l'Union européenne. Ces transferts sont encadrés par des clauses contractuelles types de la Commission européenne et des
+    garanties de conformité au RGPD.
+  </p>
+
+  <h2>11. Modification de la politique</h2>
+  <p>La présente politique peut être mise à jour à tout moment. La dernière version publiée sur le site fait foi.</p>
+
+  <h2>12. Contact</h2>
+  <p>Pour toute question concernant cette politique : <a href={`mailto:${site.email}`}>{site.email}</a></p>
+</Legal>

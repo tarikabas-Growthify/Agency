@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectStack from '../components/ProjectStack.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base
+  title="Portfolio : nos réalisations web et e-commerce | Growthify"
+  description="Boutiques Shopify, sites vitrines Webflow et WordPress, landing pages : découvrez les études de cas de Growthify, agence digitale à Paris."
+  breadcrumbs={[{ name: 'Réalisations', href: '/projects' }]}
+>
+  <PageHero
+    eyebrow="Portfolio"
+    title="Nos derniers projets réalisés."
+    lead="Découvrez comment nous avons aidé nos clients à atteindre leurs objectifs : design, développement, performance et SEO."
+    crumbs={[{ name: 'Réalisations', href: '/projects' }]}
+  />
+
+  <section class="section">
+    <div class="container">
+      <ProjectStack projects={projects} />
+    </div>
+  </section>
+
+  <Testimonials />
+  <CTA title="Votre projet sera le prochain ?" />
+</Base>

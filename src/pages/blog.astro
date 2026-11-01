@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PostCard from '../components/PostCard.astro';
+import CTA from '../components/CTA.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const [featured, ...rest] = posts;
+---
+
+<Base
+  title="Blog : SEO, CRO, growth et marketing digital | Growthify"
+  description="Les analyses et guides de Growthify sur le SEO, l'optimisation de la conversion, le growth marketing et le développement web. Des conseils concrets pour booster votre business."
+  breadcrumbs={[{ name: 'Blog', href: '/blog' }]}
+>
+  <PageHero
+    eyebrow="Blog"
+    title="Nos analyses sur la tech, le growth et le marketing digital."
+    lead="Des stratégies concrètes et des conseils actionnables, tirés de nos projets."
+    crumbs={[{ name: 'Blog', href: '/blog' }]}
+  />
+
+  <section class="section">
+    <div class="container">
+      {featured && <div class="featured" data-reveal><PostCard post={featured} featured /></div>}
+      <div class="posts" data-reveal-stagger>{rest.map((p) => <PostCard post={p} />)}</div>
+    </div>
+  </section>
+
+  <CTA />
+</Base>
+
+<style>
+  .featured {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (max-width: 900px) {
+    .posts {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .posts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

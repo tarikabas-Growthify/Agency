@@ -1,0 +1,247 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import Icon from '../../components/Icon.astro';
+import CTA from '../../components/CTA.astro';
+import { formatDate, readingTime } from '../../utils/format';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, related: posts.filter((p) => p.id !== post.id).slice(0, 3) },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  related: CollectionEntry<'blog'>[];
+}
+const { post, related } = Astro.props;
+const { Content, headings } = await render(post);
+const d = post.data;
+const url = `${site.url}/blog-post/${post.id}`;
+const toc = headings.filter((h) => h.depth === 2);
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.title,
+  description: d.description,
+  datePublished: d.date.toISOString(),
+  inLanguage: 'fr-FR',
+  mainEntityOfPage: url,
+  image: new URL(d.cover.src, site.url).href,
+  author: { '@type': 'Organization', name: 'Growthify', url: site.url },
+  publisher: { '@id': `${site.url}/#organization` },
+};
+const crumbs = [
+  { name: 'Blog', href: '/blog' },
+  { name: d.title, href: `/blog-post/${post.id}` },
+];
+---
+
+<Base title={`${d.title} | Blog Growthify`} description={d.description} type="article" image={d.cover.src} breadcrumbs={crumbs} jsonLd={[articleLd]}>
+  <article>
+    <header class="post-hero" data-hero>
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container post-hero-inner" data-hero-content>
+        <nav class="crumbs" aria-label="Fil d'Ariane" data-reveal>
+          <a href="/">Accueil</a><span aria-hidden="true">/</span><a href="/blog">Blog</a>
+        </nav>
+        <div class="post-meta" data-reveal>
+          <span class="chip">{d.category}</span>
+          <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time>
+          <span>· {readingTime(post.body ?? '')} min de lecture</span>
+        </div>
+        <h1 class="display-2" data-split="words">{d.title}</h1>
+        <p class="lead" data-reveal>{d.description}</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="post-cover" data-img-reveal>
+        <Image src={d.cover} alt={d.coverAlt} widths={[640, 960, 1280, 1536]} sizes="(max-width: 1240px) 92vw, 1240px" loading="eager" fetchpriority="high" />
+      </div>
+    </div>
+
+    <div class="container post-layout">
+      <aside class="post-aside">
+        {
+          toc.length > 0 && (
+            <nav class="toc" aria-label="Sommaire">
+              <p>Sommaire</p>
+              <ol>
+                {toc.map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )
+        }
+        <div class="share">
+          <p>Partager</p>
+          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener" aria-label="Partager sur LinkedIn"><Icon name="linkedin" /></a>
+          <a href={`mailto:?subject=${encodeURIComponent(d.title)}&body=${encodeURIComponent(url)}`} aria-label="Partager par e-mail"><Icon name="mail" /></a>
+        </div>
+      </aside>
+      <div class="prose post-content">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>À lire aussi</p>
+        <h2 class="display-3" data-split="words">D'autres articles qui pourraient vous plaire.</h2>
+      </div>
+      <div class="posts" data-reveal-stagger>{related.map((p) => <PostCard post={p} />)}</div>
+    </div>
+  </section>
+
+  <CTA title="Envie d'appliquer ces conseils à votre site ?" />
+</Base>
+
+<style>
+  .post-hero {
+    position: relative;
+    padding-top: calc(var(--header-h) + clamp(3.5rem, 8vw, 6rem));
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    overflow: hidden;
+  }
+  .post-hero-inner {
+    position: relative;
+    max-width: 960px;
+  }
+  .post-hero h1 {
+    margin-top: 1.4rem;
+  }
+  .post-hero .lead {
+    margin-top: 1.4rem;
+    max-width: 62ch;
+  }
+  .crumbs {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .post-cover {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line);
+  }
+  .post-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .post-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    align-items: start;
+  }
+  .post-aside {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    display: grid;
+    gap: 2.5rem;
+  }
+  .toc p,
+  .share p {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.7rem;
+    border-left: 1px solid var(--line);
+  }
+  .toc a {
+    display: block;
+    padding-left: 1rem;
+    margin-left: -1px;
+    border-left: 1px solid transparent;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: var(--text-soft);
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .toc a:hover {
+    color: var(--text);
+    border-color: var(--violet-400);
+  }
+  .share {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .share p {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+  .share a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    transition: background 0.3s;
+  }
+  .share a:hover {
+    background: var(--violet-500);
+  }
+  .post-content :global(h2) {
+    scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  }
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (max-width: 960px) {
+    .post-layout {
+      grid-template-columns: 1fr;
+    }
+    .post-aside {
+      position: static;
+    }
+    .toc {
+      display: none;
+    }
+    .posts {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .posts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

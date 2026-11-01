@@ -1,0 +1,43 @@
+---
+import { symbol, wordmark } from '../data/logo';
+
+interface Props {
+  variant?: 'full' | 'symbol';
+  class?: string;
+  title?: string;
+}
+const { variant = 'full', class: cls = '', title = 'Growthify' } = Astro.props;
+---
+
+<span class:list={['logo', `logo--${variant}`, cls]} role="img" aria-label={title}>
+  <svg class="logo-symbol" viewBox={symbol.viewBox} aria-hidden="true">
+    <path fill="currentColor" fill-rule="evenodd" d={symbol.d}></path>
+  </svg>
+  {
+    variant === 'full' && (
+      <svg class="logo-word" viewBox={wordmark.viewBox} aria-hidden="true">
+        <path fill="currentColor" fill-rule="evenodd" d={wordmark.d} />
+      </svg>
+    )
+  }
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    height: 1em;
+  }
+  .logo svg {
+    height: 100%;
+    width: auto;
+    flex: none;
+  }
+  .logo-symbol {
+    height: 1.55em !important;
+  }
+  .logo-word {
+    height: 0.62em !important;
+  }
+</style>

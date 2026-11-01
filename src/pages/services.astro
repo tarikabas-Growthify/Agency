@@ -1,0 +1,162 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Process from '../components/Process.astro';
+import FAQ from '../components/FAQ.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const steps = [
+  { title: 'Audit et cadrage', text: "On analyse votre activité, votre marché et vos données, puis on fixe ensemble des objectifs clairs et mesurables." },
+  { title: 'Design et stratégie', text: "On conçoit les parcours, les maquettes et le plan d'action, en pensant SEO et conversion dès le départ." },
+  { title: 'Développement et déploiement', text: 'On construit, on teste sur tous les appareils et on met en ligne, sans mauvaise surprise.' },
+  { title: 'Pilotage et optimisation', text: "On mesure, on teste et on améliore en continu. Chaque mois, un rapport clair sur ce qui a été généré." },
+];
+---
+
+<Base
+  title="Services : développement web, SEO, CRO et growth | Growthify"
+  description="Développement web, applications, design UI/UX, SEO, CRO, stratégie digitale et growth marketing pour SaaS : découvrez les expertises de Growthify, agence digitale à Paris."
+  breadcrumbs={[{ name: 'Services', href: '/services' }]}
+>
+  <PageHero
+    eyebrow="Nos services"
+    title="Les meilleurs leviers digitaux pour votre marque."
+    lead="Développement, design, acquisition et conversion : sept expertises qui travaillent ensemble, pour un seul objectif, votre croissance."
+    crumbs={[{ name: 'Services', href: '/services' }]}
+  />
+
+  <section class="section">
+    <div class="container">
+      <ul class="services-grid" data-reveal-stagger>
+        {
+          services.map((s, i) => (
+            <li>
+              <a href={`/services/${s.id}`} class="svc card" data-tilt="5" data-cursor-text="Découvrir">
+                <div class="svc-top">
+                  <span class="svc-icon" data-draw-icon>
+                    <Icon name={s.data.icon} size={30} />
+                  </span>
+                  <span class="svc-num">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h2>{s.data.title}</h2>
+                <p class="muted">{s.data.short}</p>
+                <ul class="svc-features">
+                  {s.data.features.slice(0, 3).map((f) => (
+                    <li>
+                      <Icon name="check" size={15} />
+                      {f.title}
+                    </li>
+                  ))}
+                </ul>
+                <span class="link-arrow">
+                  En savoir plus <Icon name="arrow" size={18} />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/contact-us" class="svc svc--cta card">
+            <h2>Un projet sur-mesure ?</h2>
+            <p>Parlons-en : audit gratuit et réponse sous 24 h ouvrées.</p>
+            <span class="btn">Nous contacter <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Process steps={steps} />
+  <Testimonials />
+  <FAQ />
+  <CTA />
+</Base>
+
+<style>
+  .services-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 1.2rem;
+  }
+  .services-grid > li {
+    display: flex;
+  }
+  .svc {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: clamp(1.6rem, 3vw, 2.2rem);
+    transition: border-color 0.4s;
+  }
+  .svc:hover {
+    border-color: rgb(139 112 255 / 0.5);
+  }
+  .svc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+  }
+  .svc-icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: var(--gradient-soft);
+    border: 1px solid var(--line-strong);
+    color: var(--violet-300);
+    transition: background 0.4s, color 0.4s, transform 0.6s var(--ease);
+  }
+  .svc:hover .svc-icon {
+    background: var(--gradient);
+    color: #fff;
+    transform: rotate(-8deg);
+  }
+  .svc-num {
+    font-family: var(--font-display);
+    color: var(--muted);
+  }
+  .svc h2 {
+    font-size: clamp(1.4rem, 2vw, 1.7rem);
+  }
+  .svc-features {
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0 auto;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.93rem;
+    color: var(--text-soft);
+  }
+  .svc-features li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .svc-features :global(svg) {
+    color: var(--violet-400);
+    flex: none;
+  }
+  .svc .link-arrow {
+    margin-top: 1.2rem;
+  }
+  .svc--cta {
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--gradient);
+    border-color: transparent;
+  }
+  .svc--cta p {
+    color: rgb(255 255 255 / 0.85);
+    margin-bottom: 1rem;
+  }
+</style>

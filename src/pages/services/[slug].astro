@@ -1,0 +1,204 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import Process from '../../components/Process.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTA from '../../components/CTA.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+  return services.map((service) => ({ params: { slug: service.id }, props: { service, all: services } }));
+}
+
+interface Props {
+  service: CollectionEntry<'services'>;
+  all: CollectionEntry<'services'>[];
+}
+const { service, all } = Astro.props;
+const { Content } = await render(service);
+const d = service.data;
+const others = all.filter((s) => s.id !== service.id);
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: d.title,
+  description: d.description,
+  serviceType: d.title,
+  provider: { '@id': `${site.url}/#organization` },
+  areaServed: 'FR',
+  url: `${site.url}/services/${service.id}`,
+};
+const crumbs = [
+  { name: 'Services', href: '/services' },
+  { name: d.title, href: `/services/${service.id}` },
+];
+---
+
+<Base title={`${d.title} | Growthify, agence digitale à Paris`} description={d.description} breadcrumbs={crumbs} jsonLd={[serviceLd]}>
+  <PageHero eyebrow="Service" title={d.title} lead={d.tagline} crumbs={crumbs}>
+    <div class="hero-cta" data-reveal>
+      <a href={site.calendly} target="_blank" rel="noopener" class="btn btn--gradient" data-magnetic>
+        Réserver un créneau <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span>
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container intro-grid">
+      <div class="intro-aside">
+        <div class="intro-icon" data-draw-icon data-reveal>
+          <Icon name={d.icon} size={56} />
+        </div>
+        <h2 class="display-3" data-split="words">{d.headline}</h2>
+      </div>
+      <div class="prose" data-reveal>
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight features">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Ce que nous proposons</p>
+        <h2 class="display-2" data-split="words">{d.featuresTitle ?? 'Notre offre en détail.'}</h2>
+      </div>
+      <ul class="features-grid" data-reveal-stagger>
+        {
+          d.features.map((f, i) => (
+            <li class="feature card" data-tilt="5">
+              <span class="feature-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{f.title}</h3>
+              <p class="muted">{f.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <Process steps={d.steps} />
+  <FAQ />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Nos autres expertises</p>
+        <h2 class="display-3" data-split="words">Tout fonctionne mieux ensemble.</h2>
+      </div>
+      <ul class="others" data-reveal-stagger>
+        {
+          others.map((s) => (
+            <li>
+              <a href={`/services/${s.id}`} class="other card">
+                <Icon name={s.data.icon} size={22} />
+                <span>{s.data.title}</span>
+                <Icon name="arrow-up-right" size={18} class="other-arrow" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CTA />
+</Base>
+
+<style>
+  .hero-cta {
+    margin-top: 2.2rem;
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .intro-aside {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    display: grid;
+    gap: 2rem;
+  }
+  .intro-icon {
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 112px;
+    border-radius: 30px;
+    background: var(--gradient-soft);
+    border: 1px solid var(--line-strong);
+    color: var(--violet-300);
+  }
+  .features-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 1.2rem;
+  }
+  .feature {
+    padding: 2rem;
+    display: grid;
+    gap: 0.8rem;
+    align-content: start;
+  }
+  .feature-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.8rem;
+  }
+  .feature h3 {
+    font-size: 1.3rem;
+    letter-spacing: -0.015em;
+  }
+  .others {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 0.8rem;
+  }
+  .other {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1.2rem 1.4rem;
+    font-weight: 500;
+    transition: border-color 0.3s;
+  }
+  .other :global(svg:first-child) {
+    color: var(--violet-300);
+  }
+  .other :global(.other-arrow) {
+    margin-left: auto;
+    transition: transform 0.4s var(--ease);
+  }
+  .other:hover {
+    border-color: rgb(139 112 255 / 0.5);
+  }
+  .other:hover :global(.other-arrow) {
+    transform: rotate(45deg);
+  }
+  @media (max-width: 900px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+    .intro-aside {
+      position: static;
+    }
+  }
+</style>

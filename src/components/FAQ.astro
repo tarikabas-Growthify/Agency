@@ -1,0 +1,117 @@
+---
+import Icon from './Icon.astro';
+import { faq } from '../data/site';
+
+interface Props {
+  withSchema?: boolean;
+}
+const { withSchema = true } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<section class="section faq">
+  <div class="container faq-grid">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>FAQ</p>
+      <h2 class="display-2" data-split="words">Questions fréquentes.</h2>
+      <p class="lead" data-reveal>Vous ne trouvez pas votre réponse ? <a href="/contact-us" class="link-u">Écrivez-nous</a>, on répond sous 24 h ouvrées.</p>
+    </div>
+    <div class="faq-list" data-reveal-stagger>
+      {
+        faq.map((f, i) => (
+          <details data-accordion>
+            <summary>
+              <span class="faq-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="faq-q">{f.q}</span>
+              <span class="faq-icon">
+                <Icon name="plus" size={18} />
+              </span>
+            </summary>
+            <div class="faq-body" data-accordion-body>
+              <p>{f.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+  {withSchema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</section>
+
+<style>
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .link-u {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--violet-400);
+    text-underline-offset: 4px;
+  }
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+  summary {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.2rem;
+    align-items: center;
+    padding-block: 1.6rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-num {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--violet-300);
+  }
+  .faq-q {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .faq-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    transition: transform 0.5s var(--ease), background 0.3s;
+  }
+  details[open] .faq-icon,
+  details.is-open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--violet-500);
+    border-color: var(--violet-500);
+  }
+  .faq-body {
+    overflow: hidden;
+  }
+  .faq-body p {
+    padding: 0 3.5rem 1.8rem 2.6rem;
+    color: var(--text-soft);
+  }
+  @media (max-width: 900px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+    .faq-body p {
+      padding: 0 0 1.6rem;
+    }
+  }
+</style>
