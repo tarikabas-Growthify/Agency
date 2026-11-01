@@ -34,7 +34,9 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
 
 - [x] **0. Sauvegarde** (faite le 2026-11-01) : exporter la zone OVH en mode texte (OVH > Web Cloud > Noms de domaine > growthify.fr >
       Zone DNS > « Modifier en mode textuel », tout copier).
-- [ ] **1. Désactiver DNSSEC** chez OVH (Noms de domaine > growthify.fr > onglet DNSSEC), puis **attendre 24 h**.
+- [x] **1. Désactiver DNSSEC** chez OVH (Noms de domaine > growthify.fr > Informations générales > « Secure delegation -
+      DNSSEC »), puis **attendre 24 h**. Demandé le 2026-11-01 (statut « Disabling… »). Avant l'étape 3, vérifier que
+      `dig +short DS growthify.fr` ne renvoie plus rien.
 - [ ] **2. Ajouter growthify.fr dans Cloudflare** (offre Free). Cloudflare importe les enregistrements ; on les
       compare à la sauvegarde avant d'aller plus loin (vérification faite directement sur les serveurs Cloudflare).
 - [ ] **3. Changer les serveurs DNS chez OVH** pour les 2 serveurs donnés par Cloudflare. Pendant la propagation
