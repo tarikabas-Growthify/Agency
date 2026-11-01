@@ -4,7 +4,7 @@
 export interface Env {
   BREVO_API_KEY?: string; // clé API Brevo (secret)
   TURNSTILE_SECRET_KEY?: string; // clé secrète Turnstile (secret)
-  CONTACT_TO?: string; // destinataire des messages (par défaut tarik.abas@growthify.fr)
+  CONTACT_TO?: string; // destinataire(s) des messages, séparés par des virgules (par défaut tarik.abas@growthify.fr)
   BREVO_SENDER_EMAIL?: string; // expéditeur vérifié dans Brevo (par défaut contact@growthify.fr)
   BREVO_LIST_ID?: string; // identifiant de la liste « Newsletter » dans Brevo
   ASSETS: { fetch: (request: Request) => Promise<Response> }; // fichiers du site (dossier dist)
@@ -70,7 +70,8 @@ export async function sendEmail(
     headers: { 'api-key': env.BREVO_API_KEY, 'content-type': 'application/json', accept: 'application/json' },
     body: JSON.stringify({
       sender: { name: 'Site Growthify', email: env.BREVO_SENDER_EMAIL || DEFAULT_SENDER },
-      to: [{ email: env.CONTACT_TO || DEFAULT_TO, name: 'Tarik Abas' }],
+      // CONTACT_TO peut contenir plusieurs adresses séparées par des virgules
+      to: (env.CONTACT_TO || DEFAULT_TO).split(',').map((email) => ({ email: email.trim() })).filter((r) => r.email),
       replyTo: opts.replyTo,
       subject: opts.subject,
       htmlContent: opts.html,
