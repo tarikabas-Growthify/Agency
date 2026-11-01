@@ -36,7 +36,7 @@ Puis ouvrir http://localhost:4321.
 
 Les formulaires (contact et newsletter) sont traités par le Worker Cloudflare (dossier `worker/`).
 Elles vérifient la protection anti-robots (Cloudflare Turnstile) puis envoient le message par e-mail via Brevo
-à tarik.abas@growthify.fr.
+à management@growthify.fr.
 
 Réglages à faire dans Cloudflare > Workers & Pages > `growthify` > **Settings** :
 
@@ -50,7 +50,7 @@ Réglages à faire dans Cloudflare > Workers & Pages > `growthify` > **Settings*
 | `TURNSTILE_SECRET_KEY` | Secret | Clé secrète du widget Turnstile |
 | `PUBLIC_TURNSTILE_SITE_KEY` | Texte | Clé publique du widget Turnstile (utilisée à la construction du site) |
 | `BREVO_LIST_ID` | Texte (optionnel) | Numéro de la liste « Newsletter » dans Brevo |
-| `CONTACT_TO` | Texte (optionnel) | Destinataire(s), séparés par des virgules ; par défaut tarik.abas@growthify.fr |
+| `CONTACT_TO` | Texte (optionnel) | Destinataire(s), séparés par des virgules ; par défaut management@growthify.fr |
 | `BREVO_SENDER_EMAIL` | Texte (optionnel) | Expéditeur vérifié dans Brevo, par défaut contact@growthify.fr |
 
 ## Hébergement Cloudflare Workers

@@ -1,4 +1,4 @@
-// Formulaire de contact : vérifie la demande puis l'envoie par e-mail (Brevo) à tarik.abas@growthify.fr.
+// Formulaire de contact : vérifie la demande puis l'envoie par e-mail (Brevo) à management@growthify.fr.
 import { type Ctx, reply, clean, escapeHtml, isEmail, verifyTurnstile, sendEmail } from './shared';
 
 export async function handleContact({ request, env }: Ctx) {

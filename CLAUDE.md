@@ -22,4 +22,4 @@ Growthify OS (domaine, DNS, emails, hébergement, dépôts GitHub, identité vis
 - Code versionné sur GitHub : `tarikabas-Growthify/Agency`.
 - Hébergement : Cloudflare Pages, déploiement automatique depuis GitHub.
 - Animations : GSAP.
-- Les formulaires envoient les messages à tarik.abas@growthify.fr.
+- Les formulaires envoient les messages à management@growthify.fr.

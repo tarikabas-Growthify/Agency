@@ -1,5 +1,5 @@
 // Inscription à la newsletter : ajoute le contact à la liste Brevo (BREVO_LIST_ID).
-// Si aucune liste n'est configurée, l'inscription est envoyée par e-mail à Tarik.
+// Si aucune liste n'est configurée, l'inscription est envoyée par e-mail à management@growthify.fr.
 import { type Ctx, reply, clean, escapeHtml, isEmail, verifyTurnstile, sendEmail } from './shared';
 
 export async function handleNewsletter({ request, env }: Ctx) {

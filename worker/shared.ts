@@ -4,7 +4,7 @@
 export interface Env {
   BREVO_API_KEY?: string; // clé API Brevo (secret)
   TURNSTILE_SECRET_KEY?: string; // clé secrète Turnstile (secret)
-  CONTACT_TO?: string; // destinataire(s) des messages, séparés par des virgules (par défaut tarik.abas@growthify.fr)
+  CONTACT_TO?: string; // destinataire(s) des messages, séparés par des virgules (par défaut management@growthify.fr)
   BREVO_SENDER_EMAIL?: string; // expéditeur vérifié dans Brevo (par défaut contact@growthify.fr)
   BREVO_LIST_ID?: string; // identifiant de la liste « Newsletter » dans Brevo
   ASSETS: { fetch: (request: Request) => Promise<Response> }; // fichiers du site (dossier dist)
@@ -15,7 +15,7 @@ export interface Ctx {
   env: Env;
 }
 
-export const DEFAULT_TO = 'tarik.abas@growthify.fr';
+export const DEFAULT_TO = 'management@growthify.fr';
 export const DEFAULT_SENDER = 'contact@growthify.fr';
 
 export function reply(request: Request, ok: boolean, message: string, status = ok ? 200 : 400) {
