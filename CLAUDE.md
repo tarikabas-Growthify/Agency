@@ -13,13 +13,14 @@ Growthify OS (domaine, DNS, emails, hébergement, dépôts GitHub, identité vis
 - Tout changement de DNS, de sous-domaine ou d'hébergement est noté dans `../GROWTHIFY-COMMUN.md`.
 - `os.growthify.fr` est réservé à Growthify OS. Le site peut avoir un lien discret « Connexion » vers
   https://os.growthify.fr.
-- La bascule DNS de growthify.fr se fait avec Tarik, étape par étape. Les enregistrements mail OVH
-  (MX, SPF, DKIM, autodiscover) et Brevo sont conservés à l'identique.
+- La bascule DNS de growthify.fr se fait avec Tarik, étape par étape. Les e-mails sont chez Google Workspace
+  (zone DNS chez OVH) : tous les enregistrements mail (MX, SPF, DKIM, DMARC, vérifications Google et Brevo)
+  et l'enregistrement `os` sont recopiés à l'identique.
 - Les anciennes URLs du site Webflow sont conservées ou redirigées en 301.
 
 ## Projet
 
 - Code versionné sur GitHub : `tarikabas-Growthify/Agency`.
-- Hébergement : Cloudflare Pages, déploiement automatique depuis GitHub.
+- Hébergement : Cloudflare Workers (Worker `growthify`, `wrangler.jsonc`), déploiement automatique depuis GitHub.
 - Animations : GSAP.
-- Les formulaires envoient les messages à management@growthify.fr.
+- Les formulaires envoient les messages à management@growthify.fr via l'API transactionnelle de Brevo.
