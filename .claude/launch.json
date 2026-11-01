@@ -30,9 +30,7 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": [
         "wrangler",
-        "pages",
         "dev",
-        "dist",
         "--port",
         "8788"
       ],

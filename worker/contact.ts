@@ -1,7 +1,7 @@
 // Formulaire de contact : vérifie la demande puis l'envoie par e-mail (Brevo) à tarik.abas@growthify.fr.
-import { type Ctx, reply, clean, escapeHtml, isEmail, verifyTurnstile, sendEmail } from '../../server/shared';
+import { type Ctx, reply, clean, escapeHtml, isEmail, verifyTurnstile, sendEmail } from './shared';
 
-export async function onRequestPost({ request, env }: Ctx) {
+export async function handleContact({ request, env }: Ctx) {
   let form: FormData;
   try {
     form = await request.formData();

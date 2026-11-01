@@ -1,4 +1,4 @@
-// Outils communs aux fonctions Cloudflare Pages (dossier /functions/api).
+// Outils communs aux formulaires traités par le Worker Cloudflare (dossier /worker).
 // Ces fichiers tournent sur les serveurs de Cloudflare, pas dans le navigateur.
 
 export interface Env {
@@ -7,6 +7,7 @@ export interface Env {
   CONTACT_TO?: string; // destinataire des messages (par défaut tarik.abas@growthify.fr)
   BREVO_SENDER_EMAIL?: string; // expéditeur vérifié dans Brevo (par défaut contact@growthify.fr)
   BREVO_LIST_ID?: string; // identifiant de la liste « Newsletter » dans Brevo
+  ASSETS: { fetch: (request: Request) => Promise<Response> }; // fichiers du site (dossier dist)
 }
 
 export interface Ctx {

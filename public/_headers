@@ -1,4 +1,4 @@
-# En-têtes HTTP servis par Cloudflare Pages.
+# En-têtes HTTP servis par Cloudflare avec les fichiers du site.
 
 /*
   X-Content-Type-Options: nosniff
@@ -10,7 +10,3 @@
 # Fichiers générés (noms uniques) : mis en cache un an.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
-
-# L'adresse technique *.pages.dev ne doit pas être référencée par Google (seul www.growthify.fr compte).
-https://:project.pages.dev/*
-  X-Robots-Tag: noindex

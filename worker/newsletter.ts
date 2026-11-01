@@ -1,8 +1,8 @@
 // Inscription à la newsletter : ajoute le contact à la liste Brevo (BREVO_LIST_ID).
 // Si aucune liste n'est configurée, l'inscription est envoyée par e-mail à Tarik.
-import { type Ctx, reply, clean, escapeHtml, isEmail, verifyTurnstile, sendEmail } from '../../server/shared';
+import { type Ctx, reply, clean, escapeHtml, isEmail, verifyTurnstile, sendEmail } from './shared';
 
-export async function onRequestPost({ request, env }: Ctx) {
+export async function handleNewsletter({ request, env }: Ctx) {
   let form: FormData;
   try {
     form = await request.formData();

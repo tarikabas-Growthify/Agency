@@ -1,7 +1,7 @@
 # growthify.fr
 
 Site vitrine de l'agence Growthify : [Astro](https://astro.build) (site statique), animations [GSAP](https://gsap.com),
-hébergé sur Cloudflare Pages. Référence commune des projets Growthify : `../GROWTHIFY-COMMUN.md`.
+hébergé sur Cloudflare Workers (fichiers statiques + un petit script pour les formulaires). Référence commune des projets Growthify : `../GROWTHIFY-COMMUN.md`.
 
 ## Modifier le contenu
 
@@ -34,11 +34,15 @@ Puis ouvrir http://localhost:4321.
 
 ## Formulaires
 
-Les formulaires (contact et newsletter) sont traités par deux petites fonctions Cloudflare (`functions/api/`).
+Les formulaires (contact et newsletter) sont traités par le Worker Cloudflare (dossier `worker/`).
 Elles vérifient la protection anti-robots (Cloudflare Turnstile) puis envoient le message par e-mail via Brevo
 à tarik.abas@growthify.fr.
 
-Réglages à faire dans Cloudflare Pages > projet > **Settings > Variables and Secrets** :
+Réglages à faire dans Cloudflare > Workers & Pages > `growthify` > **Settings** :
+
+- **Variables and Secrets** : `BREVO_API_KEY`, `TURNSTILE_SECRET_KEY` (type Secret) et les variables optionnelles ;
+- **Build > Variables and secrets** : `PUBLIC_TURNSTILE_SITE_KEY` (utilisée pendant la construction du site).
+
 
 | Nom | Type | Rôle |
 |---|---|---|
@@ -49,8 +53,13 @@ Réglages à faire dans Cloudflare Pages > projet > **Settings > Variables and S
 | `CONTACT_TO` | Texte (optionnel) | Destinataire, par défaut tarik.abas@growthify.fr |
 | `BREVO_SENDER_EMAIL` | Texte (optionnel) | Expéditeur vérifié dans Brevo, par défaut contact@growthify.fr |
 
-## Hébergement Cloudflare Pages
+## Hébergement Cloudflare Workers
 
-- Commande de construction : `npm run build`
-- Dossier publié : `dist`
+- Configuration : `wrangler.jsonc` (nom du Worker `growthify`, fichiers servis depuis `dist`, redirections dans `public/_redirects`)
+- Commande de construction : `npm run build` ; commande de déploiement : `npx wrangler deploy`
 - Version de Node : 24 (fichier `.node-version`)
+- Tester le site complet (formulaires compris) sur son ordinateur, après `npm run build` :
+
+```bash
+cd "/Users/tarik/Claude Code Repo/Growthify Site" && npx wrangler dev
+```

@@ -1,0 +1,19 @@
+// Configuration du Worker Cloudflare qui héberge growthify.fr.
+// Les secrets (BREVO_API_KEY, TURNSTILE_SECRET_KEY) ne sont PAS ici : ils se règlent dans le tableau de bord Cloudflare.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "growthify",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // /about-us sert about-us.html ; /about-us.html redirige vers /about-us (comme l'ancien site)
+    "html_handling": "auto-trailing-slash",
+    // une adresse inconnue affiche la page 404 du site
+    "not_found_handling": "404-page",
+    // les formulaires passent par le code du Worker, tout le reste est servi directement
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": { "enabled": true }
+}
