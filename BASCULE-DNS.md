@@ -23,16 +23,16 @@ enregistrements DNS passe chez Cloudflare (gratuit).
 | `_dmarc` | TXT | `v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com` | DMARC | **identique** |
 | `os` | A | `192.99.247.150` | Growthify OS (VPS) | **identique**, en « DNS only » (nuage gris) |
 | `ftp` | CNAME | `growthify.fr` | réglage OVH par défaut, inutilisé | peut être supprimé |
+| `_webflow` | TXT | `one-time-verification=de1c…` (en double) | vérification Webflow | à supprimer après la bascule |
 
 ⚠️ **DNSSEC est activé** chez OVH. Il faut le désactiver et attendre 24 h **avant** de changer les serveurs DNS,
 sinon le domaine entier (site et e-mails) devient injoignable.
 
-La liste ci-dessus ne contient que ce qui est visible de l'extérieur : l'export complet de la zone OVH fait foi
-(étape 0).
+Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-backup/zone-ovh-growthify.fr-2026-11-01.txt`).
 
 ## Étapes
 
-- [ ] **0. Sauvegarde** : exporter la zone OVH en mode texte (OVH > Web Cloud > Noms de domaine > growthify.fr >
+- [x] **0. Sauvegarde** (faite le 2026-11-01) : exporter la zone OVH en mode texte (OVH > Web Cloud > Noms de domaine > growthify.fr >
       Zone DNS > « Modifier en mode textuel », tout copier).
 - [ ] **1. Désactiver DNSSEC** chez OVH (Noms de domaine > growthify.fr > onglet DNSSEC), puis **attendre 24 h**.
 - [ ] **2. Ajouter growthify.fr dans Cloudflare** (offre Free). Cloudflare importe les enregistrements ; on les

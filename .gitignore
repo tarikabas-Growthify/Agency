@@ -15,3 +15,6 @@ dist/
 
 # Réglages locaux de Claude Code
 .claude/settings.local.json
+
+# Sauvegardes de la zone DNS (gardées sur le Mac)
+dns-backup/
