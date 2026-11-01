@@ -46,7 +46,7 @@ async function renderTurnstiles() {
 
 const MESSAGES = {
   sending: 'Envoi en cours…',
-  error: "Oups, l'envoi a échoué. Réessayez ou écrivez-nous à contact@growthify.fr.",
+  error: "Oups, l'envoi a échoué. Réessayez ou écrivez-nous à management@growthify.fr.",
 };
 
 export function initForms() {

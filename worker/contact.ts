@@ -57,7 +57,7 @@ export async function handleContact({ request, env }: Ctx) {
     });
   } catch (err) {
     console.error(err);
-    return reply(request, false, "L'envoi a échoué. Écrivez-nous directement à contact@growthify.fr.", 502);
+    return reply(request, false, "L'envoi a échoué. Écrivez-nous directement à management@growthify.fr.", 502);
   }
 
   return reply(request, true, 'Merci ! Votre message a bien été envoyé, nous revenons vers vous sous 24 h ouvrées.');

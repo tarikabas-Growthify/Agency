@@ -16,7 +16,7 @@ export const site = {
   title: 'Growthify : agence digitale à Paris | Boostez votre acquisition client',
   description:
     "Growthify est l'agence digitale qui booste votre visibilité en ligne. Nous fusionnons développement web, SEO et growth marketing pour attirer et convertir des clients. Audit gratuit.",
-  email: 'contact@growthify.fr',
+  email: 'management@growthify.fr',
   phone: '+33 6 34 38 90 46',
   phoneHref: 'tel:+33634389046',
   calendly: 'https://calendly.com/tarik-abas-growthify/30min',
