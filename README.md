@@ -53,4 +53,4 @@ Réglages à faire dans Cloudflare Pages > projet > **Settings > Variables and S
 
 - Commande de construction : `npm run build`
 - Dossier publié : `dist`
-- Version de Node : 22 ou plus (variable `NODE_VERSION=22`)
+- Version de Node : 24 (fichier `.node-version`)
