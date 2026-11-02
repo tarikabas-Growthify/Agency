@@ -42,7 +42,9 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
       « DNS only » : un DKIM proxifié casse la signature des e-mails). Réponses de `hope.ns.cloudflare.com` et de
       `dns100.ovh.net` comparées sur les 10 noms : identiques. Serveurs Cloudflare : `hope.ns.cloudflare.com`,
       `kolton.ns.cloudflare.com`.
-- [ ] **3. Changer les serveurs DNS chez OVH** pour `hope.ns.cloudflare.com` et `kolton.ns.cloudflare.com`. Pendant la propagation
+- [ ] **3. Changer les serveurs DNS chez OVH** pour `hope.ns.cloudflare.com` et `kolton.ns.cloudflare.com`.
+      Demandé chez OVH le 2026-11-02 (« Use my own DNS », statut « Enabling… ») ; en attente de prise en compte par le
+      registre `.fr` (vérifier avec `dig +norec NS growthify.fr @d.nic.fr`). Pendant la propagation
       (quelques heures), l'ancien site Webflow et les e-mails continuent de fonctionner.
 - [ ] **4. Une fois la zone « Active »** : brancher `growthify.fr` et `www.growthify.fr` sur le Worker (Custom
       domains), rediriger `growthify.fr` vers `www.growthify.fr`, vérifier pages, redirections, formulaire et
