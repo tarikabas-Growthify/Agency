@@ -37,9 +37,12 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
 - [x] **1. Désactiver DNSSEC** chez OVH (Noms de domaine > growthify.fr > Informations générales > « Secure delegation -
       DNSSEC »), puis **attendre 24 h**. Demandé le 2026-11-01 (statut « Disabling… »). Avant l'étape 3, vérifier que
       `dig +short DS growthify.fr` ne renvoie plus rien. Vérifié le 2026-11-02 : plus d'enregistrement DS.
-- [ ] **2. Ajouter growthify.fr dans Cloudflare** (offre Free). Cloudflare importe les enregistrements ; on les
-      compare à la sauvegarde avant d'aller plus loin (vérification faite directement sur les serveurs Cloudflare).
-- [ ] **3. Changer les serveurs DNS chez OVH** pour les 2 serveurs donnés par Cloudflare. Pendant la propagation
+- [x] **2. Ajouter growthify.fr dans Cloudflare** (offre Free). Fait le 2026-11-02. L'import automatique avait
+      oublié `os` (ajouté à la main) et mis en « Proxied » le site, `www`, `ftp` et les deux DKIM Brevo (repassés en
+      « DNS only » : un DKIM proxifié casse la signature des e-mails). Réponses de `hope.ns.cloudflare.com` et de
+      `dns100.ovh.net` comparées sur les 10 noms : identiques. Serveurs Cloudflare : `hope.ns.cloudflare.com`,
+      `kolton.ns.cloudflare.com`.
+- [ ] **3. Changer les serveurs DNS chez OVH** pour `hope.ns.cloudflare.com` et `kolton.ns.cloudflare.com`. Pendant la propagation
       (quelques heures), l'ancien site Webflow et les e-mails continuent de fonctionner.
 - [ ] **4. Une fois la zone « Active »** : brancher `growthify.fr` et `www.growthify.fr` sur le Worker (Custom
       domains), rediriger `growthify.fr` vers `www.growthify.fr`, vérifier pages, redirections, formulaire et
