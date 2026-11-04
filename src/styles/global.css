@@ -337,6 +337,21 @@ p {
   opacity: 1;
 }
 
+/* Badge des services mis en avant (agents IA, growth marketing) */
+.badge-featured {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--gradient);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .chip {
   display: inline-flex;
   align-items: center;

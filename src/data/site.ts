@@ -13,9 +13,9 @@ import enchant from '../assets/images/clients/enchant.png';
 export const site = {
   name: 'Growthify',
   url: 'https://www.growthify.fr',
-  title: 'Growthify : agence digitale à Paris | Boostez votre acquisition client',
+  title: 'Agence IA et growth marketing à Paris | Growthify',
   description:
-    "Growthify est l'agence digitale qui booste votre visibilité en ligne. Nous fusionnons développement web, SEO et growth marketing pour attirer et convertir des clients. Audit gratuit.",
+    "Growthify accélère la croissance des PME et startups avec des agents IA sur mesure, l'automatisation et le growth marketing. Agence à Paris, audit offert.",
   email: 'management@growthify.fr',
   phone: '+33 6 34 38 90 46',
   phoneHref: 'tel:+33634389046',
@@ -95,46 +95,46 @@ export const team = [
 
 export const pillars = [
   {
+    title: 'IA et automatisation',
+    text: "Des agents IA qui prennent en charge vos tâches répétitives et répondent à vos clients 24 h/24.",
+  },
+  {
+    title: 'Growth marketing',
+    text: "Une stratégie d'acquisition testée et mesurée pour attirer et convertir les bons clients.",
+  },
+  {
     title: 'Développement',
-    text: 'Un code propre et performant : Shopify, Webflow, WordPress ou sur-mesure.',
-  },
-  {
-    title: 'Design et conversion',
-    text: "Une UX qui guide l'utilisateur vers l'action, testée et mesurée.",
-  },
-  {
-    title: 'Acquisition',
-    text: 'Un SEO solide et un growth marketing ambitieux pour attirer les bons clients.',
+    text: 'Sites web et applications mobiles rapides, pensés pour convertir.',
   },
 ];
 
 export const strengths = [
-  "Design d'interfaces modernes",
-  'Sites et applications optimisés pour le SEO et l’ASO',
-  'Expertise des outils modernes (Shopify, Webflow, Figma…)',
-  'Approche growth pensée pour la croissance de votre business',
-  'Intégration IA adaptée à votre produit (API et agents)',
+  'Agents IA sur mesure, connectés à vos outils',
+  'Stratégies growth pilotées par la donnée',
+  'Sites et applications optimisés pour le SEO et la conversion',
+  'Outils modernes : Claude, GPT, n8n, Shopify, Webflow…',
+  'Un seul partenaire, de la stratégie à la mise en production',
 ];
 
 export const faq = [
   {
-    q: 'Quels services propose votre agence digitale ?',
-    a: "Growthify est une agence digitale spécialisée dans la croissance. Nous proposons le développement web (Webflow, WordPress, Shopify, sur-mesure), le design UX/UI, le SEO et la stratégie de visibilité, l'optimisation de la conversion (CRO), et le branding. Chaque service est conçu pour transformer votre site en machine de croissance, pas en simple vitrine.",
+    q: 'Que fait une agence IA et growth marketing ?',
+    a: "Growthify aide les entreprises à grandir sur deux leviers : l'intelligence artificielle (agents IA sur mesure, automatisation de vos processus) et le growth marketing (stratégie d'acquisition, conversion, fidélisation). Nous développons aussi les sites web et applications mobiles qui les rendent possibles.",
   },
   {
-    q: 'Comment allez-vous nous aider à développer notre activité ?',
-    a: "Nous combinons développement web, SEO, UX/UI et CRO. Le développement assure un site rapide, fiable et évolutif. Le SEO attire un trafic qualifié. L'UX/UI transforme ce trafic en prospects grâce à une expérience fluide et rassurante. Le CRO maximise vos ventes en optimisant chaque étape à partir de données réelles. Chaque action est mesurée, testée et orientée ROI.",
+    q: "Comment l'IA peut-elle aider mon entreprise à grandir ?",
+    a: "Un agent IA peut répondre à vos clients 24 h/24, qualifier vos prospects, préparer vos devis ou mettre à jour votre CRM. Vos équipes gagnent du temps sur les tâches répétitives et se concentrent sur la vente et la relation client.",
   },
   {
-    q: 'Combien de temps dure un projet SEO ?',
-    a: "Le SEO est une stratégie de long terme. En général, les premières améliorations apparaissent entre 6 et 12 semaines, les résultats solides entre 3 et 6 mois, et la croissance durable s'installe après 6 à 12 mois. Nous lançons des actions techniques, éditoriales et structurelles dès le premier mois pour accélérer le retour sur investissement.",
+    q: 'Travaillez-vous avec les PME ou seulement avec les startups ?',
+    a: "Avec les deux. Nous accompagnons des PME, des e-commerçants, des SaaS et des startups, en adaptant chaque projet à la taille, au budget et aux outils de l'entreprise.",
   },
   {
-    q: 'Proposez-vous la maintenance et l’évolution de sites web ?',
-    a: "Oui. Growthify peut prendre en charge la maintenance technique (sécurité, mises à jour, sauvegardes), l'amélioration continue (nouvelles sections et pages, performance), le suivi SEO et l'optimisation UX/CRO. Notre objectif : faire évoluer votre site au rythme de votre croissance.",
+    q: 'Par où commencer ?',
+    a: "Par un audit offert : nous analysons votre activité, repérons les meilleures opportunités (IA, acquisition, site) et vous proposons un plan d'action priorisé, sans engagement.",
   },
   {
-    q: 'Créez-vous des sites sur-mesure ou utilisez-vous des templates ?',
-    a: "Les deux, selon vos besoins. Pour une identité forte et unique, nous créons un design 100 % sur-mesure. Pour optimiser votre budget, nous pouvons partir d'un template premium entièrement personnalisé. Dans tous les cas, l'objectif reste le même : un site rapide, moderne et construit pour convertir.",
+    q: 'Proposez-vous un suivi après le lancement ?',
+    a: "Oui. Maintenance de vos outils, amélioration de vos agents IA, suivi de vos campagnes et de votre référencement : nous restons à vos côtés pour faire évoluer ce qui a été mis en place.",
   },
 ];

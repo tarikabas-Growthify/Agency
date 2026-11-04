@@ -47,14 +47,14 @@ const steps = [
     <div class="container hero-grid" data-hero-content>
       <div class="hero-copy">
         <p class="hero-badge" data-reveal>
-          <span class="dot"></span> Agence digitale à Paris · Audit gratuit
+          <span class="dot"></span> Agence IA et growth à Paris · Audit offert
         </p>
         <h1 class="display-1 hero-title">
-          <span class="mask"><span class="text-gradient" data-mask-up>Growthify,</span></span>
-          <span data-split="words">l'agence digitale pilote de votre croissance.</span>
+          <span class="mask"><span class="text-gradient" data-mask-up>Growthify,</span></span>{' '}
+          <span data-split="words">l'agence IA et growth qui accélère votre croissance.</span>
         </h1>
         <p class="lead hero-lead" data-reveal>
-          Que vous vendiez en ligne ou que vous fassiez grandir un SaaS, nous concevons, développons et optimisons votre produit pour qu'il génère des résultats mesurables.
+          Agents IA, automatisation et stratégies growth : nous mettons l'intelligence artificielle au service de vos ventes. Des résultats mesurables, pas des promesses.
         </p>
         <div class="hero-actions" data-reveal>
           <a href={site.calendly} target="_blank" rel="noopener" class="btn btn--gradient" data-magnetic data-cursor-text="Réserver">
@@ -90,10 +90,10 @@ const steps = [
         <div class="hero-chips" data-reveal-stagger>
           {
             [
-              { c: 'c1', d: 0.08, icon: 'seo', label: 'SEO' },
-              { c: 'c2', d: -0.07, icon: 'cro', label: 'CRO' },
-              { c: 'c3', d: 0.06, icon: 'design', label: 'UX/UI' },
-              { c: 'c4', d: -0.05, icon: 'growth', label: 'Growth' },
+              { c: 'c1', d: 0.08, icon: 'ai', label: 'Agents IA' },
+              { c: 'c2', d: -0.07, icon: 'growth', label: 'Growth' },
+              { c: 'c3', d: 0.06, icon: 'code', label: 'Web' },
+              { c: 'c4', d: -0.05, icon: 'seo', label: 'SEO' },
             ].map((chip) => (
               <span class:list={['hero-chip-pos', chip.c]}>
                 <span data-depth={chip.d}>
@@ -123,15 +123,15 @@ const steps = [
     <div class="container">
       <p class="eyebrow" data-reveal>Qui sommes-nous ?</p>
       <p class="manifesto-text" data-scrub-words>
-        Chez Growthify, on a fait un constat simple : la majorité des sites web ne servent à rien. Beaucoup sont beaux, certains sont rapides, peu génèrent réellement du chiffre d'affaires. Nous construisons des sites qui vendent.
+        Chez Growthify, on a fait un constat simple : l'IA change la façon dont les entreprises grandissent. Celles qui l'adoptent vont plus vite. Nous vous aidons à prendre cette avance.
       </p>
       <div class="manifesto-grid">
         <div class="manifesto-copy" data-reveal>
           <p class="lead">
-            Basée à Paris, notre agence accompagne deux types de clients : les e-commerçants et PME qui veulent une boutique en ligne qui vend, et les fondateurs de SaaS et d'applications mobiles qui veulent structurer leur croissance.
+            Basée à Paris, notre agence accompagne PME, e-commerçants et startups sur deux leviers : l'intégration de l'IA dans leur quotidien et des stratégies growth qui génèrent des clients.
           </p>
           <p class="muted">
-            On ne livre pas un site pour disparaître ensuite. On construit un système de croissance, on le mesure, on l'améliore. Parce qu'un site qui ne génère pas de revenus, c'est juste un coût.
+            On ne livre pas un outil pour disparaître ensuite. On construit un système de croissance, on le mesure, on l'améliore.
           </p>
           <a href="/about-us" class="link-arrow">Découvrir l'agence <Icon name="arrow" size={18} /></a>
         </div>
@@ -163,7 +163,10 @@ const steps = [
       {
         services.map((s, i) => (
           <a href={`/services/${s.id}`} class="service-card card" data-cursor-text="Découvrir">
-            <span class="service-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="service-num">
+              {String(i + 1).padStart(2, '0')}
+              {s.data.featured && <span class="badge-featured">Service phare</span>}
+            </span>
             <span class="service-icon" data-draw-icon>
               <Icon name={s.data.icon} size={34} />
             </span>
@@ -195,10 +198,10 @@ const steps = [
         <p class="eyebrow" data-reveal>Pourquoi Growthify ?</p>
         <h2 class="display-2" data-split="words">Plus qu'une agence, un partenaire de croissance.</h2>
         <p class="lead" data-reveal>
-          La plupart des agences livrent un site puis disparaissent. Le développeur ne parle pas au designer, le designer ne parle pas au marketeur. Résultat : un produit déconnecté de vos objectifs.
+          Beaucoup d'entreprises testent l'IA sans résultat, ou empilent les actions marketing sans savoir ce qui rapporte. Résultat : du temps et du budget perdus.
         </p>
         <p class="muted" data-reveal>
-          Chez Growthify, on ne sépare jamais le développement, le design et l'acquisition. On fusionne ces trois piliers, parce que c'est la seule façon de générer des résultats mesurables.
+          Chez Growthify, on relie l'IA, le growth et la technique à vos objectifs business. Chaque action est mesurée, et on ne garde que ce qui fait grandir votre chiffre d'affaires.
         </p>
         <ul class="strengths" data-reveal-stagger>
           {
@@ -597,6 +600,9 @@ const steps = [
     border-color: rgb(139 112 255 / 0.5);
   }
   .service-num {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: var(--font-display);
     font-size: 0.9rem;
     color: var(--muted);

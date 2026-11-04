@@ -5,3 +5,15 @@
 /template-info/*          /          301
 /project-categories/*     /projects  301
 /sitemap.xml              /sitemap-index.xml  301
+
+# Refonte des services (2026-11-04) : 7 services regroupés en 5.
+/services/web-development                                     /services/creation-site-web   301
+/services/ui-ux-design                                        /services/creation-site-web   301
+/services/optimiser-la-conversion-cro                         /services/creation-site-web   301
+/services/app-development                                     /services/application-mobile  301
+/services/growth-marketing-pour-saas-applications-mobiles     /services/growth-marketing    301
+/services/digital-marketing                                   /services/growth-marketing    301
+
+# Ancienne version linguistique de Webflow encore connue de Google
+/fr                       /          301
+/fr/*                     /:splat    301

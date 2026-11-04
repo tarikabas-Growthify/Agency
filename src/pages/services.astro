@@ -18,14 +18,14 @@ const steps = [
 ---
 
 <Base
-  title="Services : développement web, SEO, CRO et growth | Growthify"
-  description="Développement web, applications, design UI/UX, SEO, CRO, stratégie digitale et growth marketing pour SaaS : découvrez les expertises de Growthify, agence digitale à Paris."
+  title="Services : agents IA, growth, sites web et apps | Growthify"
+  description="Agents IA, automatisation, growth marketing, création de site web, application mobile et SEO : les expertises de Growthify, agence IA et growth à Paris."
   breadcrumbs={[{ name: 'Services', href: '/services' }]}
 >
   <PageHero
     eyebrow="Nos services"
-    title="Les meilleurs leviers digitaux pour votre marque."
-    lead="Développement, design, acquisition et conversion : sept expertises qui travaillent ensemble, pour un seul objectif, votre croissance."
+    title="L'IA et le growth au service de votre croissance."
+    lead="Deux expertises phares, les agents IA et le growth marketing, et trois savoir-faire techniques pour les mettre en œuvre."
     crumbs={[{ name: 'Services', href: '/services' }]}
   />
 
@@ -40,7 +40,11 @@ const steps = [
                   <span class="svc-icon" data-draw-icon>
                     <Icon name={s.data.icon} size={30} />
                   </span>
-                  <span class="svc-num">{String(i + 1).padStart(2, '0')}</span>
+                  {s.data.featured ? (
+                    <span class="badge-featured">Service phare</span>
+                  ) : (
+                    <span class="svc-num">{String(i + 1).padStart(2, '0')}</span>
+                  )}
                 </div>
                 <h2>{s.data.title}</h2>
                 <p class="muted">{s.data.short}</p>

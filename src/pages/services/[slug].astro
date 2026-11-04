@@ -29,7 +29,7 @@ const serviceLd = {
   description: d.description,
   serviceType: d.title,
   provider: { '@id': `${site.url}/#organization` },
-  areaServed: 'FR',
+  areaServed: ['Paris', 'Île-de-France', 'France'],
   url: `${site.url}/services/${service.id}`,
 };
 const crumbs = [
@@ -38,8 +38,8 @@ const crumbs = [
 ];
 ---
 
-<Base title={`${d.title} | Growthify, agence digitale à Paris`} description={d.description} breadcrumbs={crumbs} jsonLd={[serviceLd]}>
-  <PageHero eyebrow="Service" title={d.title} lead={d.tagline} crumbs={crumbs}>
+<Base title={d.seoTitle} description={d.description} breadcrumbs={crumbs} jsonLd={[serviceLd]}>
+  <PageHero eyebrow={d.featured ? `Service phare · ${d.title}` : d.title} title={d.h1} lead={d.tagline} crumbs={crumbs}>
     <div class="hero-cta" data-reveal>
       <a href={site.calendly} target="_blank" rel="noopener" class="btn btn--gradient" data-magnetic>
         Réserver un créneau <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span>
@@ -82,7 +82,7 @@ const crumbs = [
   </section>
 
   <Process steps={d.steps} />
-  <FAQ />
+  <FAQ items={d.faq} />
 
   <section class="section section--tight">
     <div class="container">

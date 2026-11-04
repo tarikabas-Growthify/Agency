@@ -4,12 +4,13 @@ import { faq } from '../data/site';
 
 interface Props {
   withSchema?: boolean;
+  items?: { q: string; a: string }[];
 }
-const { withSchema = true } = Astro.props;
+const { withSchema = true, items = faq } = Astro.props;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 ---
 
@@ -22,7 +23,7 @@ const schema = {
     </div>
     <div class="faq-list" data-reveal-stagger>
       {
-        faq.map((f, i) => (
+        items.map((f, i) => (
           <details data-accordion>
             <summary>
               <span class="faq-num">{String(i + 1).padStart(2, '0')}</span>
