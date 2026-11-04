@@ -55,7 +55,13 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
       reçu sur management@ par Tarik.
 - [ ] **5. Finitions** : réactiver DNSSEC (côté Cloudflare, puis nouvel enregistrement DS chez OVH), désactiver
       l'adresse `workers.dev`, envoyer le sitemap dans Google Search Console, arrêter l'hébergement Webflow
-      après une ou deux semaines.
+      après une ou deux semaines. Avancement au 2026-11-04 :
+      - [x] DNSSEC activé chez Cloudflare ; clé déclarée chez OVH (Key tag 2371, flag 257, algorithme 13).
+      - [x] Adresse `workers.dev` coupée (`"workers_dev": false` dans `wrangler.jsonc`, domaines déclarés dans `routes`).
+      - [ ] Supprimer `ftp`, `_webflow` et le TXT `1|www.growthify.fr` (à faire par Tarik dans Cloudflare).
+      - [ ] Corriger le SPF (à faire par Tarik, valeur conseillée ci-dessous).
+      - [ ] Search Console : envoyer `https://www.growthify.fr/sitemap-index.xml`.
+      - [ ] Résilier l'hébergement Webflow vers le 2026-11-18.
 
 Correction SPF conseillée (avec l'accord de Tarik, peut se faire à l'étape 4) :
 `v=spf1 include:_spf.google.com include:spf.brevo.com ~all`
