@@ -67,8 +67,9 @@ cd "/Users/tarik/Claude Code Repo/Growthify Site" && npx wrangler dev
 ## À faire plus tard
 
 - [ ] **Anti-robot Turnstile** (seulement si du spam arrive par les formulaires). Dans Cloudflare : **Turnstile** →
-  **Add widget** → nom `Site Growthify`, noms d'hôte `growthify.fr`, `www.growthify.fr` et l'adresse `….workers.dev`,
+  **Add widget** → nom `Site Growthify`, noms d'hôte `growthify.fr` et `www.growthify.fr`,
   mode **Managed**. Puis, dans Workers & Pages → `growthify` → **Settings** :
   `TURNSTILE_SECRET_KEY` (Variables and Secrets, type Secret) et `PUBLIC_TURNSTILE_SITE_KEY`
   (Build → Variables and secrets), et relancer un déploiement. Aucun changement de code n'est nécessaire.
-- [ ] Après la bascule de growthify.fr : désactiver l'adresse `….workers.dev` du Worker (Settings → Domains & Routes).
+- [x] Après la bascule de growthify.fr : adresse `….workers.dev` désactivée (`"workers_dev": false` dans
+  `wrangler.jsonc`, à ne pas retirer : sinon chaque déploiement la rallume).
