@@ -4,3 +4,4 @@
 /home-two                 /          301
 /template-info/*          /          301
 /project-categories/*     /projects  301
+/sitemap.xml              /sitemap-index.xml  301
