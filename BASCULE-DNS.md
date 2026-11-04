@@ -46,9 +46,12 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
       Fait le 2026-11-02 (« Use my own DNS »). Registre `.fr` à jour le jour même ; site, MX, `os` et DKIM Brevo
       vérifiés juste après : inchangés. Pendant la propagation
       (quelques heures), l'ancien site Webflow et les e-mails continuent de fonctionner.
-- [ ] **4. Une fois la zone « Active »** : brancher `growthify.fr` et `www.growthify.fr` sur le Worker (Custom
+- [x] **4. Une fois la zone « Active »** : brancher `growthify.fr` et `www.growthify.fr` sur le Worker (Custom
       domains), rediriger `growthify.fr` vers `www.growthify.fr`, vérifier pages, redirections, formulaire et
-      e-mails.
+      e-mails. Fait le 2026-11-04 : enregistrements Webflow (`A` 198.202.211.1 et `www` CNAME cdn.webflow.com)
+      supprimés, `growthify.fr` et `www.growthify.fr` branchés sur le Worker `growthify`, Redirect Rule « Redirect
+      from root to WWW » (301, paramètres conservés), « Always Use HTTPS » activé. Vérifié : toutes les pages en 200,
+      anciennes URLs Webflow en 301, page inconnue en 404, MX, `os` et DKIM Brevo inchangés.
 - [ ] **5. Finitions** : réactiver DNSSEC (côté Cloudflare, puis nouvel enregistrement DS chez OVH), désactiver
       l'adresse `workers.dev`, envoyer le sitemap dans Google Search Console, arrêter l'hébergement Webflow
       après une ou deux semaines.
