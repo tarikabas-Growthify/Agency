@@ -61,7 +61,8 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
       - [x] Adresse `workers.dev` coupée (`"workers_dev": false` dans `wrangler.jsonc`, domaines déclarés dans `routes`).
       - [x] `ftp`, `_webflow` et le TXT `1|www.growthify.fr` supprimés par Tarik.
       - [x] SPF corrigé par Tarik : `v=spf1 include:_spf.google.com include:spf.brevo.com ~all`.
-      - [ ] Search Console : envoyer `https://www.growthify.fr/sitemap-index.xml`.
+      - [x] Search Console (propriété « domaine » growthify.fr déjà vérifiée) : `sitemap-index.xml` envoyé et lu par
+            Google le 2026-11-04 ; l'ancien `/sitemap.xml` de Webflow redirige en 301 vers le nouveau.
       - [ ] Résilier l'hébergement Webflow vers le 2026-11-18.
 
 Correction SPF conseillée (avec l'accord de Tarik, peut se faire à l'étape 4) :
