@@ -51,4 +51,4 @@ Pas de gadget : chaque projet part d'un objectif chiffré (heures gagnées, lead
 
 Un agent IA donne le meilleur de lui-même quand il sert votre stratégie. C'est pourquoi nous l'associons à notre expertise [growth marketing](/services/growth-marketing) : plus de prospects qualifiés, des réponses plus rapides, un meilleur taux de conversion.
 
-PME, startups ou e-commerçants : nous adaptons la solution à votre taille, à votre budget et à vos outils.
+PME, startups ou e-commerçants : nous adaptons la solution à votre taille, à votre budget et à vos outils. Pour des idées concrètes, lisez notre guide [agent IA pour PME : 7 exemples](/blog-post/agent-ia-pour-pme).
