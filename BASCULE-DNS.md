@@ -51,7 +51,8 @@ Liste confirmée par l'export complet de la zone OVH (sauvegarde locale : `dns-b
       e-mails. Fait le 2026-11-04 : enregistrements Webflow (`A` 198.202.211.1 et `www` CNAME cdn.webflow.com)
       supprimés, `growthify.fr` et `www.growthify.fr` branchés sur le Worker `growthify`, Redirect Rule « Redirect
       from root to WWW » (301, paramètres conservés), « Always Use HTTPS » activé. Vérifié : toutes les pages en 200,
-      anciennes URLs Webflow en 301, page inconnue en 404, MX, `os` et DKIM Brevo inchangés.
+      anciennes URLs Webflow en 301, page inconnue en 404, MX, `os` et DKIM Brevo inchangés; message de test du formulaire
+      reçu sur management@ par Tarik.
 - [ ] **5. Finitions** : réactiver DNSSEC (côté Cloudflare, puis nouvel enregistrement DS chez OVH), désactiver
       l'adresse `workers.dev`, envoyer le sitemap dans Google Search Console, arrêter l'hébergement Webflow
       après une ou deux semaines.
