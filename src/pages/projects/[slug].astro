@@ -43,6 +43,7 @@ const ld = {
   creator: { '@id': `${site.url}/#organization` },
   url: `${site.url}/projects/${project.id}`,
   ...(d.date && { dateCreated: d.date.toISOString().slice(0, 10) }),
+  ...(d.website && { sameAs: d.website }),
 };
 ---
 
@@ -63,7 +64,7 @@ const ld = {
   <section class="section showcase" data-screen-scope>
     <div class="container">
       <div class="showcase-frame" data-reveal>
-        <BrowserFrame src={d.screenshot} alt={d.screenshotAlt} url={d.client.toLowerCase().replace(/[^a-z]/g, '') + '.fr'} mode="scroll" height="min(78vh, 760px)" eager />
+        <BrowserFrame src={d.screenshot} alt={d.screenshotAlt} url={d.website ? new URL(d.website).host : d.client.toLowerCase().replace(/[^a-z]/g, '') + '.fr'} mode="scroll" height="min(78vh, 760px)" eager />
       </div>
       <p class="showcase-hint muted" data-reveal>Faites défiler : le site se déroule dans le cadre.</p>
     </div>
@@ -77,6 +78,13 @@ const ld = {
           <p class="muted">{d.tasks}</p>
           <h2>Outils</h2>
           <ul class="case-stack">{d.stack.map((s) => <li>{s}</li>)}</ul>
+          {
+            d.website && (
+              <a href={d.website} target="_blank" rel="noopener" class="btn btn--gradient case-visit" data-magnetic>
+                Voir le site <span class="btn-icon"><Icon name="arrow-up-right" size={16} /></span>
+              </a>
+            )
+          }
         </div>
       </aside>
       <div class="prose" data-reveal>
@@ -137,6 +145,10 @@ const ld = {
   .case-aside {
     position: sticky;
     top: calc(var(--header-h) + 2rem);
+  }
+  .case-visit {
+    justify-self: start;
+    margin-top: 0.8rem;
   }
   .case-card {
     padding: 2rem;

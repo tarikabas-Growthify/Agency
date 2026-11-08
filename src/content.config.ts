@@ -28,6 +28,8 @@ const projects = defineCollection({
       date: z.coerce.date().optional(),
       stack: z.array(z.string()),
       tasks: z.string(),
+      // adresse du site réalisé (affichée dans le cadre du navigateur et en lien « Voir le site »)
+      website: z.string().url().optional(),
       screenshot: image(),
       screenshotAlt: z.string(),
       order: z.number(),

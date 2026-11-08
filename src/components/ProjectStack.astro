@@ -37,7 +37,7 @@ const { projects } = Astro.props;
             </span>
           </div>
           <div class="project-visual" data-cursor-text="Voir">
-            <BrowserFrame src={p.data.screenshot} alt={p.data.screenshotAlt} url={p.data.client.toLowerCase().replace(/[^a-z]/g, '') + '.fr'} height="clamp(300px, 38vw, 470px)" />
+            <BrowserFrame src={p.data.screenshot} alt={p.data.screenshotAlt} url={p.data.website ? new URL(p.data.website).host : p.data.client.toLowerCase().replace(/[^a-z]/g, '') + '.fr'} height="clamp(300px, 38vw, 470px)" />
           </div>
         </article>
       </div>
