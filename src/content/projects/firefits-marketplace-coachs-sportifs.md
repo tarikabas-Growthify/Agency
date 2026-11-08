@@ -1,11 +1,11 @@
 ---
 title: "Marketplace et app mobile de coachs sportifs"
-description: "FireFits : conception et développement d'une marketplace de coachs sportifs avec app iOS et Android, réservation, paiement et suivi nutritionnel par IA."
+description: "FireFits : marketplace de coachs sportifs avec app iOS et Android, réservation, paiement et IA qui analyse les repas en photo pour le suivi nutritionnel."
 summary: "Une plateforme complète pour trouver son coach, réserver, payer et suivre son programme : site, app iPhone et Android, espace coach, back-office et IA nutritionnelle."
 client: "FireFits"
 industry: "Sport et bien-être"
 stack: ["Astro", "Expo (React Native)", "Supabase", "API IA", "Cloudflare"]
-tasks: "Conception produit, UX/UI, site vitrine, app iOS et Android, application web, API IA de suivi nutritionnel, espace coach, back-office, SEO"
+tasks: "Conception produit, UX/UI, site vitrine, app iOS et Android, application web, API IA d'analyse des repas en photo, espace coach, back-office, SEO"
 website: "https://firefits.io"
 screenshot: ../../assets/images/projects/firefits.jpg
 screenshotAlt: "Page d'accueil de FireFits : recherche de coach par objectif, discipline et ville, profils de coachs, témoignages et blog"
@@ -27,16 +27,16 @@ Growthify a conçu et développé l'ensemble de la plateforme, de la première m
 
 ## Une IA pour le suivi nutritionnel
 
-Pour aller plus loin que le simple suivi des séances, nous avons développé une **API d'intelligence artificielle** dédiée à la nutrition : l'utilisateur renseigne son repas, et l'IA en extrait automatiquement les données nutritionnelles (calories, protéines, glucides, lipides).
+Pour aller plus loin que le simple suivi des séances, nous avons développé une **API d'intelligence artificielle** dédiée à la nutrition : l'utilisateur **prend son repas en photo**, et l'IA reconnaît les aliments et en estime automatiquement les données nutritionnelles (calories, protéines, glucides, lipides).
 
-Ces données alimentent directement le suivi de progression dans l'app. Plus besoin de chercher chaque aliment dans une base ou de tout calculer à la main : le suivi nutritionnel devient simple, et les sportifs le tiennent dans la durée.
+Ces données alimentent directement le suivi de progression dans l'app. Une photo suffit : plus besoin de chercher chaque aliment dans une base ou de tout peser et calculer à la main. Le suivi nutritionnel devient aussi simple que de partager une photo, et les sportifs le tiennent dans la durée.
 
 C'est exactement le type d'intégration que nous réalisons pour nos clients : une [IA sur mesure](/services/agents-ia), branchée au cœur du produit, qui apporte une vraie valeur à l'utilisateur.
 
 ## Ce que FireFits démontre
 
 - Une plateforme complète (site, app mobile, app web, espace coach et back-office) qui partage une seule base de données.
-- Une fonctionnalité d'IA intégrée au produit, au service de l'expérience utilisateur.
+- Une IA de vision intégrée au produit : une simple photo de repas devient des données nutritionnelles exploitables.
 - Un site pensé pour le référencement local, avec une page par ville et par discipline.
 
 Vous avez un projet d'[application mobile](/services/application-mobile) ou souhaitez intégrer l'IA à votre produit ? Découvrez [firefits.io](https://firefits.io) et parlons de votre idée.
