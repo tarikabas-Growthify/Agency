@@ -8,6 +8,15 @@ cover: ../../assets/images/blog/shopify-2026.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes du commerce en ligne : boutique, panier, carte de paiement et graphique de croissance"
 category: "E-commerce"
 service: creation-site-web
+faq:
+  - q: "Combien coûte la création d'une boutique Shopify ?"
+    a: "Il faut distinguer l'abonnement Shopify (à partir de quelques dizaines d'euros par mois) et la création de la boutique : design, intégration du thème, paramétrage et applications. Le budget de création dépend surtout du design (thème adapté ou sur mesure) et du nombre de fonctions. À titre d'exemple, la boutique de prêt-à-porter Atelier Hanami, présentée dans notre portfolio, a représenté un budget de 4 000 €."
+  - q: "Peut-on migrer vers Shopify sans perdre son référencement ?"
+    a: "Oui, si la migration est préparée : export des produits, clients et commandes, conservation des contenus, et redirections 301 de chaque ancienne adresse vers la nouvelle. C'est l'étape la plus importante pour garder vos positions sur Google."
+  - q: "Shopify est-il adapté au B2B ?"
+    a: "Oui, surtout avec Shopify Plus, qui propose des fonctions dédiées au B2B (catalogues et prix par client, conditions de paiement). Pour un petit volume B2B, des applications peuvent suffire sur les forfaits classiques."
+  - q: "Faut-il passer par une agence pour créer sa boutique Shopify ?"
+    a: "Pour une première boutique simple, ce n'est pas obligatoire. Une agence Shopify devient utile dès que vous visez un design sur mesure, une migration, des intégrations (ERP, CRM, IA) ou une optimisation poussée de la conversion."
 ---
 
 **Choisir Shopify en 2026 reste une décision gagnante pour la plupart des marques qui veulent vendre vite et bien, à condition de connaître ses coûts réels et ses limites avant de signer.**
@@ -89,6 +98,14 @@ En résumé, la question « Shopify ou WooCommerce » oppose la sérénité à l
 
 Et si vous n'avez rien à vendre en ligne (site de présentation, portfolio, association), aucune des trois n'est adaptée : Webflow ou un développement sur mesure feront mieux l'affaire. Avant de trancher, listez vos cinq fonctions indispensables et vérifiez quelle plateforme les propose le plus simplement.
 
+## Créer sa boutique Shopify seul ou avec une agence Shopify ?
+
+Shopify est conçu pour qu'on puisse lancer une boutique sans coder. Pour tester un produit ou démarrer petit, un thème bien choisi et quelques réglages suffisent.
+
+Les choses se compliquent quand la boutique devient un vrai canal de vente. Le développement Shopify demande alors des compétences précises : thème sur mesure fidèle à votre marque, structure des collections pensée pour le SEO, migration depuis WooCommerce ou PrestaShop sans perte de référencement, connexion à vos outils de gestion, vitesse sur mobile.
+
+C'est le rôle d'une [agence Shopify à Paris](/services/creation-site-web) comme Growthify. Pour [Atelier Hanami](/projects/conception-et-developpement-boutique-shopify), une marque de prêt-à-porter, nous avons réalisé les maquettes Figma puis intégré une boutique Shopify 100 % responsive, avec paiements, livraison et suivi marketing prêts dès le lancement.
+
 ## Ce que l'IA change pour une boutique Shopify
 
 Shopify s'ouvre facilement à d'autres outils grâce à ses API. C'est là que l'IA devient un vrai levier de croissance, bien au-delà de la génération de descriptions :
@@ -103,4 +120,4 @@ Ces automatisations prolongent les [tendances e-commerce de 2026](/blog-post/ten
 
 Shopify reste en 2026 l'un des moyens les plus rapides de lancer une boutique fiable et pensée pour convertir. Ses limites sont connues : coûts qui s'additionnent, dépendance à l'écosystème, blog moins riche que WordPress. Si votre priorité est de vendre et de grandir, c'est souvent le meilleur choix.
 
-Ouvrir une boutique Shopify est à la portée de tous. La rendre plus performante que celles de vos concurrents est un autre métier : design UX/UI, structure des pages, suivi des données et optimisation du tunnel d'achat. Vous voulez lancer ou optimiser votre boutique ? Découvrez notre accompagnement en [création de site web](/services/creation-site-web), ou [contactez-nous](/contact-us) pour en parler.
+Ouvrir une boutique Shopify est à la portée de tous. La rendre plus performante que celles de vos concurrents est un autre métier : design UX/UI, structure des pages, suivi des données et optimisation du tunnel d'achat. Vous voulez lancer ou optimiser votre boutique ? Découvrez notre accompagnement en [création de boutique Shopify et de site e-commerce](/services/creation-site-web), ou [contactez-nous](/contact-us) pour un audit offert.
