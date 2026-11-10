@@ -8,6 +8,15 @@ cover: ../../assets/images/blog/beau-site.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes de site web, de vitesse et de conversion"
 category: "Web"
 service: creation-site-web
+faq:
+  - q: "Combien coûte la création d'un site internet qui vend ?"
+    a: "Le budget dépend du type de site (vitrine, landing pages, e-commerce), du design (thème adapté ou sur mesure), du nombre de pages et des fonctions à intégrer (réservation, paiement, CRM, IA). Un cahier des charges court, avec vos objectifs, permet d'obtenir un devis précis."
+  - q: "Faut-il refaire son site ou l'optimiser ?"
+    a: "Si le site est lent, difficile à modifier ou basé sur une technologie dépassée, une refonte est souvent plus rentable. S'il est techniquement sain mais convertit mal, une optimisation ciblée (textes, parcours, appels à l'action, vitesse) suffit généralement."
+  - q: "Combien de temps faut-il pour créer un site internet ?"
+    a: "Quelques semaines pour un site vitrine, davantage pour un site e-commerce ou une plateforme sur mesure. Le délai dépend surtout de la préparation des contenus et du nombre d'allers-retours sur les maquettes."
+  - q: "Comment savoir si mon site convertit bien ?"
+    a: "Mesurez votre taux de conversion : le nombre de contacts ou d'achats divisé par le nombre de visites. Configurez le suivi des formulaires, des appels et des ventes dans votre outil d'analyse, puis comparez vos pages entre elles pour repérer celles qui freinent."
 ---
 
 **Un site internet qui vend n'est pas forcément le plus beau : c'est celui qui attire les bons visiteurs, les rassure et les guide jusqu'à la prise de contact ou l'achat.**
@@ -28,11 +37,13 @@ Un visiteur doit comprendre immédiatement ce que vous faites, pour qui, et pour
 
 ## 2. La vitesse avant la beauté
 
-Vous avez de superbes vidéos en arrière-plan ? Attention. Sur smartphone, chaque seconde d'attente fait partir une partie de vos visiteurs, parfois avant même d'avoir vu votre logo. Un site rapide au design épuré vendra toujours plus qu'un site magnifique mais lent. Images compressées, code léger et bon hébergement font souvent plus pour vos ventes qu'une animation spectaculaire.
+Vous avez de superbes vidéos en arrière-plan ? Attention. Sur smartphone, chaque seconde d'attente fait partir une partie de vos visiteurs, parfois avant même d'avoir vu votre logo. Un site rapide au design épuré vendra toujours plus qu'un site magnifique mais lent. Images compressées, code léger et bon hébergement font souvent plus pour vos ventes qu'une animation spectaculaire. Testez vos pages avec PageSpeed Insights, l'outil gratuit de Google : il mesure les Core Web Vitals, ces indicateurs de vitesse et de stabilité que Google prend en compte dans son classement.
 
 ## 3. Être visible : la vitrine dans le désert
 
 Imaginez la plus belle boutique du monde ouverte en plein désert de l'Agafay. Personne n'y entrera. Sur le web, c'est pareil : Google ne juge pas l'esthétique de votre site, il lit votre code et vos textes. Sans un vrai travail de référencement, votre site reste invisible pour vos futurs clients, aussi soigné soit-il.
+
+Le SEO se prépare dès la conception : une page par service, des titres qui reprennent les mots de vos clients, une structure claire. Commencez par [trouver ce que vos clients cherchent sur Google](/blog-post/seo-trouver-ce-que-vos-clients-cherchent), puis faites-vous accompagner par une [agence SEO](/services/strategie-seo) si la concurrence est forte.
 
 ## 4. Un parcours qui guide le visiteur
 
@@ -52,7 +63,27 @@ Un site qui convertit ne se devine pas, il se construit avec des données. Suive
 
 ## Et l'IA dans tout ça ?
 
-L'intelligence artificielle ouvre une nouvelle étape. Un agent IA peut répondre aux questions des visiteurs à toute heure, qualifier une demande, proposer un rendez-vous ou recommander le bon produit. Bien intégré, cet assistant transforme des visites silencieuses en conversations, puis en clients.
+L'intelligence artificielle ouvre une nouvelle étape. Un agent IA peut répondre aux questions des visiteurs à toute heure, qualifier une demande, proposer un rendez-vous ou recommander le bon produit. Bien intégré, cet assistant transforme des visites silencieuses en conversations, puis en clients. Découvrez des cas concrets dans notre article [Agent IA pour PME : 7 exemples](/blog-post/agent-ia-pour-pme), ou notre offre d'[agents IA sur mesure](/services/agents-ia).
+
+## Refonte de site internet ou optimisation : que choisir ?
+
+Avant de tout refaire, posez le bon diagnostic :
+
+- **Optimisez** si votre site est rapide, facile à modifier et bien construit, mais qu'il génère peu de contacts. Retravailler les textes, le parcours et les appels à l'action suffit souvent.
+- **Lancez une refonte** si votre site est lent, compliqué à mettre à jour, mal adapté au mobile, ou si votre offre a changé. Prévoyez alors des redirections 301 de chaque ancienne adresse vers la nouvelle pour conserver votre référencement.
+
+Dans les deux cas, partez des données : quelles pages attirent du trafic, lesquelles en perdent, où les visiteurs abandonnent.
+
+## Notre méthode de création de site web
+
+Chez Growthify, chaque site part d'un objectif business, pas d'une maquette :
+
+1. **Audit et stratégie** : vos clients, vos offres, les mots-clés à viser et l'action attendue sur chaque page.
+2. **Design UX/UI** : des maquettes sur Figma, testées sur mobile avant le développement.
+3. **Développement** : la technologie adaptée au projet (Webflow, WordPress, Shopify ou sur mesure), avec la vitesse et le SEO technique intégrés.
+4. **Mesure et optimisation de la conversion** : suivi des contacts et des ventes, puis tests pour améliorer les pages clés.
+
+Quelques exemples : un [site vitrine et des landing pages Webflow orientés conversion](/projects/site-vitrine-landing-pages-figma-webflow) pour InfluFinder, un [site vitrine WordPress avec réservation en ligne et SEO local](/projects/site-vitrine-wordpress-pour-restaurant) pour un restaurant, ou une [boutique Shopify](/projects/conception-et-developpement-boutique-shopify) pour une marque de prêt-à-porter.
 
 ## Le secret d'un site internet qui vend
 
@@ -66,4 +97,4 @@ Ne vous méprenez pas : l'apparence reste importante pour donner confiance. Mais
 
 Si votre site actuel est beau mais ne vous rapporte rien, le problème se trouve sous le capot. Clarté, vitesse, visibilité, parcours, preuves, mesure et IA : ce sont ces leviers qui font la différence entre une vitrine et un site internet qui vend.
 
-Chez Growthify, nous concevons des sites pensés pour la croissance, avec le design UX/UI et l'optimisation de la conversion inclus. Découvrez notre offre de [création de site web](/services/creation-site-web) ou [contactez-nous pour un audit rapide](/contact-us) : nous vous dirons exactement ce qui bloque vos ventes.
+Growthify, [agence de création de site internet à Paris](/services/creation-site-web), conçoit des sites pensés pour la croissance, avec le design UX/UI et l'optimisation de la conversion inclus. Création ou refonte de site web, [demandez votre audit offert](/contact-us) : nous vous dirons exactement ce qui bloque vos ventes.
