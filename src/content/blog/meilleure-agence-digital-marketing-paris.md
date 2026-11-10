@@ -8,6 +8,15 @@ cover: ../../assets/images/blog/agence-digital-marketing.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes du marketing digital : publicité, réseaux sociaux, référencement et courbes de croissance"
 category: "Agence"
 service: growth-marketing
+faq:
+  - q: "Combien coûte une agence digital marketing à Paris ?"
+    a: "Le tarif dépend du périmètre (stratégie, publicité, SEO, contenus), du nombre de canaux et du niveau d'accompagnement. Les formules courantes sont le forfait mensuel, le projet ponctuel ou une rémunération liée au budget publicitaire géré. Demandez toujours un devis détaillé avec les objectifs associés."
+  - q: "Quelle différence entre une agence digital marketing et une agence growth marketing ?"
+    a: "Une agence digital marketing gère vos canaux (publicité, réseaux sociaux, SEO). Une agence growth marketing travaille tout le parcours client, de l'acquisition à la fidélisation, avec des tests rapides et des objectifs de chiffre d'affaires. Elle choisit les canaux selon ce que les données montrent."
+  - q: "Faut-il choisir une agence basée à Paris ?"
+    a: "Ce n'est pas obligatoire, mais la proximité facilite les ateliers, la compréhension de votre marché local et la réactivité. Pour une entreprise francilienne qui vise aussi des clients locaux, une agence à Paris ou en Île-de-France est un vrai plus."
+  - q: "Que doit contenir le contrat avec une agence ?"
+    a: "Les objectifs chiffrés, les livrables, la fréquence des rapports, la propriété de vos comptes publicitaires et de vos données, la durée d'engagement et les conditions de sortie. Méfiez-vous des engagements longs sans objectifs mesurables."
 ---
 
 **Meilleure agence digital marketing Paris : notre top 5 des « pépites » qui misent sur vos résultats plutôt que sur leur taille.**
@@ -18,6 +27,16 @@ Les géants imposent souvent des tickets d'entrée élevés et un accompagnement
 
 Voici 5 agences à suivre en 2026. Ce classement est rédigé par l'équipe Growthify, qui y figure.
 
+## Le top 5 en un coup d'œil
+
+| Agence | Spécialité | Pour qui |
+|---|---|---|
+| Orixa | Search et publicité pilotés par la donnée | Marques et e-commerçants à gros budgets média |
+| Growthify | Growth marketing et agents IA | PME, e-commerçants, startups et SaaS |
+| Neads | Réseaux sociaux, vidéo, influence | Marques grand public, cible jeune |
+| Let's Clic | SEO et Google Ads | Entreprises locales et réseaux de franchises |
+| Inbound Value | Inbound marketing et HubSpot | PME B2B et éditeurs SaaS |
+
 ## 1. Orixa : le search et le média pilotés par la donnée
 
 Installée à Paris, Orixa s'est construite depuis 2007 autour du search marketing. Le groupe réunit plusieurs agences spécialisées, dont Origine pour le média et le référencement.
@@ -27,9 +46,10 @@ Installée à Paris, Orixa s'est construite depuis 2007 autour du search marketi
 
 ## 2. Growthify : agents IA et growth marketing
 
-(Oui, nous nous glissons dans ce classement.) Growthify est une agence IA et growth marketing. Nous ne vendons pas du « trafic » : nous construisons des systèmes d'acquisition qui transforment vos visiteurs en clients.
+(Oui, nous nous glissons dans ce classement.) Growthify est une [agence growth marketing à Paris](/services/growth-marketing) qui place l'IA au cœur de sa méthode. Nous ne vendons pas du « trafic » : nous construisons des systèmes d'acquisition qui transforment vos visiteurs en clients, en testant vite et en ne gardant que ce qui rapporte.
 
 - **Notre force** : nous combinons le [growth marketing](/services/growth-marketing) (SEO, publicité, optimisation de la conversion), des [agents IA sur mesure](/services/agents-ia) qui automatisent la prospection, la qualification ou le suivi client, et la création de sites et d'applications pensés pour convertir.
+- **La preuve** : nous appliquons cette méthode à nos propres produits, comme [FireFits](/projects/firefits-marketplace-coachs-sportifs), marketplace de coachs sportifs avec une IA qui analyse les repas en photo.
 - **Pour qui ?** Les PME, e-commerçants, startups et éditeurs SaaS qui veulent une acquisition prévisible et rentable.
 
 ## 3. Neads : les natifs des réseaux sociaux
@@ -53,6 +73,12 @@ Le B2B demande une autre approche. Présente à Paris et dans plusieurs villes d
 - **Leur force** : l'inbound marketing couplé au CRM HubSpot et à l'automatisation, pour attirer des prospects et les transmettre au bon moment aux commerciaux.
 - **Pour qui ?** Les PME B2B, notamment les éditeurs SaaS, dont le cycle de vente s'étale sur plusieurs mois.
 
+## Agence digital marketing ou agence growth marketing ?
+
+Les deux termes sont souvent confondus. Une agence digital marketing gère vos canaux : publicité, réseaux sociaux, référencement. Une agence growth marketing part de vos objectifs de chiffre d'affaires et travaille tout le parcours client, de la première visite à la fidélisation.
+
+La méthode growth repose sur l'expérimentation, proche du growth hacking : des tests courts, mesurés, et des moyens concentrés sur les canaux qui fonctionnent vraiment. C'est l'approche à privilégier si vous cherchez une **stratégie digitale** pilotée par les résultats plutôt qu'une simple présence en ligne. Pour comprendre comment le SEO s'inscrit dans cette logique, lisez notre article sur [le SEO comme canal d'acquisition](/blog-post/seo-canal-acquisition-rentable).
+
 ## Comment choisir votre agence digital marketing
 
 Avant de signer, vérifiez ces points :
@@ -69,4 +95,4 @@ Pour votre site, consultez aussi notre classement de la [meilleure agence web à
 
 La meilleure agence n'est pas forcément la plus connue : c'est celle dont l'expertise colle à votre canal d'acquisition et qui s'engage sur vos résultats. Agence marketing digital à Paris ou aux portes de la capitale, choisissez un partenaire transparent et réactif.
 
-**Vous voulez arrêter de naviguer à vue avec votre budget marketing ?** Chez Growthify, nous vous aidons à bâtir une machine d'acquisition rentable et durable. [Parlons de votre projet](/contact-us).
+**Vous voulez arrêter de naviguer à vue avec votre budget marketing ?** Chez Growthify, [agence growth marketing et growth hacking à Paris](/services/growth-marketing), nous vous aidons à bâtir une machine d'acquisition rentable et durable, boostée par l'IA. [Demandez votre audit offert](/contact-us).
