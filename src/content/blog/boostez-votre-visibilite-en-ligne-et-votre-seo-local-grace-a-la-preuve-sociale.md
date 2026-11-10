@@ -4,8 +4,8 @@ seoTitle: "Avis Google et SEO local : 5 stratégies | Growthify"
 description: "Avis Google et SEO local : optimisez votre fiche Google Business Profile et appliquez 5 stratégies pour obtenir plus d'avis et grimper dans le Pack Local."
 date: 2026-05-03
 author: "Saad Saoualif"
-cover: ../../assets/images/blog/seo-local-preuve-sociale.jpg
-coverAlt: "Fiche Google d'une boulangerie avec des avis clients 5 étoiles sur un smartphone"
+cover: ../../assets/images/blog/seo-local-preuve-sociale.webp
+coverAlt: "Smartphone affichant une carte avec une épingle de localisation, entouré d'avis clients 5 étoiles et de commerces de quartier à Paris"
 category: "SEO local"
 service: strategie-seo
 faq:

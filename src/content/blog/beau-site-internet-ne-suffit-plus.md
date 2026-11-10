@@ -5,7 +5,7 @@ description: "Site internet qui vend : pourquoi le design ne suffit plus en 2026
 date: 2026-11-10
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/beau-site.webp
-coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes de site web, de vitesse et de conversion"
+coverAlt: "Écran de site web dont la partie basse transparente révèle des engrenages et un compteur de performance, illustrant un site qui vend"
 category: "Web"
 service: creation-site-web
 faq:

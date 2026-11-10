@@ -4,7 +4,7 @@ seoTitle: "Booster sa visibilité en ligne : le guide | Growthify"
 description: "Booster sa visibilité en ligne : SEO, design UX/UI, optimisation de la conversion et IA, les leviers pour transformer votre visibilité en croissance."
 date: 2025-10-30
 cover: ../../assets/images/blog/visibilite-en-ligne.webp
-coverAlt: "Tableau de bord de visibilité en ligne sur un ordinateur portable"
+coverAlt: "Entonnoir de verre lumineux qui transforme des particules en étoiles, devant la tour Eiffel, avec les étapes attirer, convertir et fidéliser"
 category: "Stratégie"
 service: growth-marketing
 faq:

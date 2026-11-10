@@ -5,7 +5,7 @@ description: "SEO, canal d'acquisition le plus rentable : le ROI du référencem
 date: 2026-11-10
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/seo-acquisition.webp
-coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes évoquant le référencement naturel, la recherche Google et la croissance du trafic"
+coverAlt: "Barre de recherche lumineuse au-dessus de piles de pièces de plus en plus hautes et d'une jeune pousse, illustrant la rentabilité du SEO"
 category: "SEO"
 service: strategie-seo
 faq:

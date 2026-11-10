@@ -5,7 +5,7 @@ description: "Le cocon sémantique expliqué simplement : structure, maillage in
 date: 2026-05-03
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/methode-seo.webp
-coverAlt: "Ordinateur portable affichant des statistiques de trafic SEO en hausse"
+coverAlt: "Arborescence de pages web en sphères lumineuses reliées entre elles, formant un cocon sémantique, devant la tour Eiffel"
 category: "SEO"
 service: strategie-seo
 faq:

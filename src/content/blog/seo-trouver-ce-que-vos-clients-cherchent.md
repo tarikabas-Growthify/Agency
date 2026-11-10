@@ -5,7 +5,7 @@ description: "Recherche de mots-clés : la méthode pas à pas pour trouver ce q
 date: 2026-11-10
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/seo-recherches.webp
-coverAlt: "Fond sombre aux couleurs violet et rose de Growthify avec une barre de recherche, une loupe et des pictogrammes de mots-clés et de questions"
+coverAlt: "Grande loupe entourée de bulles de questions et d'étiquettes de mots-clés reliées par des lignes lumineuses, devant la tour Eiffel"
 category: "SEO"
 service: strategie-seo
 faq:
