@@ -5,7 +5,7 @@ description: "IA et emploi : l'IA va-t-elle détruire des emplois ? Ce que disen
 date: 2026-11-10
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/ia-emplois.webp
-coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes évoquant l'intelligence artificielle et les métiers de demain"
+coverAlt: "Une main humaine et une main robotique assemblent deux pièces de puzzle lumineuses, entourées d'icônes de métiers : mallette, calculatrice, pinceau et casque de chantier"
 category: "IA"
 service: agents-ia
 faq:

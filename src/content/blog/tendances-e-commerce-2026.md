@@ -5,7 +5,7 @@ description: "Tendances e-commerce 2026 : vidéo produit, personnalisation par l
 date: 2026-11-10
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/ecommerce-tendances.webp
-coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes du commerce en ligne : panier, smartphone, vidéo et paiement"
+coverAlt: "Smartphone affichant une fiche produit avec vidéo, entouré d'un panier, d'une carte de paiement sans contact et d'une puce IA, illustrant les tendances e-commerce"
 category: "E-commerce"
 service: growth-marketing
 faq:

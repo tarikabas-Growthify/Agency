@@ -5,7 +5,7 @@ description: "Meilleure agence digital marketing Paris : notre top 5 des agences
 date: 2026-11-10
 author: "Saad Saoualif"
 cover: ../../assets/images/blog/agence-digital-marketing.webp
-coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes du marketing digital : publicité, réseaux sociaux, référencement et courbes de croissance"
+coverAlt: "Podium lumineux surmonté d'une flèche de croissance devant la tour Eiffel, entouré d'icônes du marketing digital : mégaphone, cœur, loupe et graphique"
 category: "Agence"
 service: growth-marketing
 faq:

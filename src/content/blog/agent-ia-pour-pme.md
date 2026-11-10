@@ -3,7 +3,7 @@ title: "Agent IA pour PME : 7 exemples concrets"
 description: "Agent IA pour PME : définition, 7 exemples concrets en entreprise (service client, prospection, devis…), coût, automatisation IA et méthode pour démarrer."
 date: 2026-11-04
 cover: ../../assets/images/blog/agent-ia-pme.webp
-coverAlt: "Un agent IA au centre, connecté aux e-mails, au chat, au CRM, aux ventes, à l'agenda et à la boutique en ligne d'une PME"
+coverAlt: "Agent IA représenté par une sphère lumineuse au centre, relié aux outils d'une PME : e-mails, messagerie, agenda, devis, boutique en ligne et tableau de bord"
 category: "IA"
 service: agents-ia
 faq:
