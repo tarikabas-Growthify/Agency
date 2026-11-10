@@ -7,6 +7,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/ia-emplois.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes évoquant l'intelligence artificielle et les métiers de demain"
 category: "IA"
+service: agents-ia
 ---
 
 **IA et emploi : l'intelligence artificielle va surtout transformer les métiers, bien plus qu'elle ne va les supprimer, et c'est une vraie occasion pour les PME de gagner du temps.**

@@ -5,6 +5,7 @@ date: 2025-10-30
 cover: ../../assets/images/blog/visibilite-en-ligne.webp
 coverAlt: "Tableau de bord de visibilité en ligne sur un ordinateur portable"
 category: "Stratégie"
+service: growth-marketing
 ---
 
 Vous avez investi dans un site web magnifique. Les couleurs sont parfaites, les animations sont fluides… mais personne ne le visite. C'est la frustration numéro un de nombreuses entreprises : **l'invisibilité en ligne**.

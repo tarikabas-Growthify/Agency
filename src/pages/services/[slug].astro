@@ -6,18 +6,24 @@ import Icon from '../../components/Icon.astro';
 import Process from '../../components/Process.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
+import PostCard from '../../components/PostCard.astro';
 import { site } from '../../data/site';
 
 export async function getStaticPaths() {
   const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
-  return services.map((service) => ({ params: { slug: service.id }, props: { service, all: services } }));
+  const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return services.map((service) => ({
+    params: { slug: service.id },
+    props: { service, all: services, posts: posts.filter((p) => p.data.service?.id === service.id).slice(0, 3) },
+  }));
 }
 
 interface Props {
   service: CollectionEntry<'services'>;
   all: CollectionEntry<'services'>[];
+  posts: CollectionEntry<'blog'>[];
 }
-const { service, all } = Astro.props;
+const { service, all, posts } = Astro.props;
 const { Content } = await render(service);
 const d = service.data;
 const others = all.filter((s) => s.id !== service.id);
@@ -106,6 +112,20 @@ const crumbs = [
     </div>
   </section>
 
+  {
+    posts.length > 0 && (
+      <section class="section section--tight">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" data-reveal>Nos guides</p>
+            <h2 class="display-3" data-split="words">{`Nos articles pour aller plus loin.`}</h2>
+          </div>
+          <div class="posts" data-reveal-stagger>{posts.map((p) => <PostCard post={p} />)}</div>
+        </div>
+      </section>
+    )
+  }
+
   <CTA />
 </Base>
 
@@ -163,6 +183,16 @@ const crumbs = [
   .feature h3 {
     font-size: 1.3rem;
     letter-spacing: -0.015em;
+  }
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (max-width: 960px) {
+    .posts {
+      grid-template-columns: 1fr;
+    }
   }
   .others {
     list-style: none;

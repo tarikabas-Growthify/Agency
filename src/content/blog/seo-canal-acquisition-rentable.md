@@ -7,6 +7,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/seo-acquisition.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes évoquant le référencement naturel, la recherche Google et la croissance du trafic"
 category: "SEO"
+service: strategie-seo
 ---
 
 **Le SEO est un canal d'acquisition qui devient plus rentable chaque mois : contrairement à la publicité, chaque page bien positionnée continue d'attirer des clients sans que vous payiez pour chaque visite.**

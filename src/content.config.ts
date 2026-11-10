@@ -1,4 +1,4 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
@@ -16,6 +16,10 @@ const blog = defineCollection({
       cover: image(),
       coverAlt: z.string(),
       category: z.string(),
+      // service Growthify auquel l'article se rattache : encart vers la page service, et l'article apparaît sur cette page
+      service: reference('services').optional(),
+      // questions fréquentes affichées en fin d'article (balisage FAQPage pour Google)
+      faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
     }),
 });
 

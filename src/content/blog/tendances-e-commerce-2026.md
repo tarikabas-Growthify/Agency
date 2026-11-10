@@ -7,6 +7,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/ecommerce-tendances.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes du commerce en ligne : panier, smartphone, vidéo et paiement"
 category: "E-commerce"
+service: growth-marketing
 ---
 
 **Les tendances e-commerce 2026 se résument à une idée : l'acheteur veut voir, être compris et payer sans effort, et les boutiques qui l'ont intégré prennent de l'avance.**

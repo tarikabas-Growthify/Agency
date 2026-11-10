@@ -7,6 +7,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/seo-recherches.webp
 coverAlt: "Fond sombre aux couleurs violet et rose de Growthify avec une barre de recherche, une loupe et des pictogrammes de mots-clés et de questions"
 category: "SEO"
+service: strategie-seo
 ---
 
 **La recherche de mots-clés vous permet de trouver ce que vos clients cherchent sur Google, avec leurs propres mots, pour vous placer devant eux au moment où ils sont prêts à acheter.**

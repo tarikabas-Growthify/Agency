@@ -6,6 +6,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/seo-local-preuve-sociale.jpg
 coverAlt: "Fiche Google d'une boulangerie avec des avis clients 5 étoiles sur un smartphone"
 category: "SEO local"
+service: strategie-seo
 ---
 
 **Boostez votre e-réputation et votre SEO local grâce à la puissance de la preuve sociale.**

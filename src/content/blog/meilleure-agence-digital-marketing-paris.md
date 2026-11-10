@@ -7,6 +7,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/agence-digital-marketing.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes du marketing digital : publicité, réseaux sociaux, référencement et courbes de croissance"
 category: "Agence"
+service: growth-marketing
 ---
 
 **Meilleure agence digital marketing Paris : notre top 5 des « pépites » qui misent sur vos résultats plutôt que sur leur taille.**

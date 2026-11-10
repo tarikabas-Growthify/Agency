@@ -6,6 +6,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/methode-seo.webp
 coverAlt: "Ordinateur portable affichant des statistiques de trafic SEO en hausse"
 category: "SEO"
+service: strategie-seo
 ---
 
 **Propulsez votre visibilité organique en structurant vos contenus autour de l'intention utilisateur.**

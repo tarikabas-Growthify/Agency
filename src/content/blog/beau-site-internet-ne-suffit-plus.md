@@ -7,6 +7,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/beau-site.webp
 coverAlt: "Illustration sur fond sombre aux couleurs violet et rose de Growthify, avec des pictogrammes de site web, de vitesse et de conversion"
 category: "Web"
+service: creation-site-web
 ---
 
 **Un site internet qui vend n'est pas forcément le plus beau : c'est celui qui attire les bons visiteurs, les rassure et les guide jusqu'à la prise de contact ou l'achat.**

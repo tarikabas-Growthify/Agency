@@ -6,6 +6,7 @@ author: "Saad Saoualif"
 cover: ../../assets/images/blog/agence-web-paris.webp
 coverAlt: "Top 5 des meilleures agences web à Paris en 2026, avec la tour Eiffel en arrière-plan"
 category: "Agence"
+service: creation-site-web
 ---
 
 **Meilleure agence web Paris : notre top 5 des « pépites » en 2026.**
