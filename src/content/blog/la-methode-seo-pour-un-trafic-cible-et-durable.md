@@ -2,6 +2,7 @@
 title: "La méthode SEO pour un trafic ciblé et durable"
 description: "Le cocon sémantique expliqué simplement : structure, maillage interne et 4 étapes clés pour bâtir une autorité SEO durable et attirer un trafic qualifié."
 date: 2026-05-03
+author: "Saad Saoualif"
 cover: ../../assets/images/blog/methode-seo.webp
 coverAlt: "Ordinateur portable affichant des statistiques de trafic SEO en hausse"
 category: "SEO"

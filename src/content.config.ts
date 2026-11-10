@@ -7,8 +7,12 @@ const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      // titre affiché dans Google si le titre de l'article est trop long (sinon : titre + « | Blog Growthify »)
+      seoTitle: z.string().optional(),
       description: z.string(),
       date: z.coerce.date(),
+      // auteur de l'article (membre de l'équipe) ; à défaut, Growthify
+      author: z.string().optional(),
       cover: image(),
       coverAlt: z.string(),
       category: z.string(),

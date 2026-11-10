@@ -2,6 +2,7 @@
 title: "Meilleure agence web à Paris 2026"
 description: "Meilleure agence web à Paris : notre top 5 des agences « challengers » en 2026, agiles, à taille humaine et aux tarifs justes. Comparatif et conseils pour bien choisir."
 date: 2026-05-03
+author: "Saad Saoualif"
 cover: ../../assets/images/blog/agence-web-paris.webp
 coverAlt: "Top 5 des meilleures agences web à Paris en 2026, avec la tour Eiffel en arrière-plan"
 category: "Agence"

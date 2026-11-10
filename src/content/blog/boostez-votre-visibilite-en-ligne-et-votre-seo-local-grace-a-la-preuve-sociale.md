@@ -2,6 +2,7 @@
 title: "Boostez votre visibilité en ligne et votre SEO local grâce à la preuve sociale"
 description: "Avis Google et SEO local : 5 stratégies concrètes pour inciter vos clients à laisser une note positive et grimper dans le Pack Local de Google."
 date: 2026-05-03
+author: "Saad Saoualif"
 cover: ../../assets/images/blog/seo-local-preuve-sociale.jpg
 coverAlt: "Fiche Google d'une boulangerie avec des avis clients 5 étoiles sur un smartphone"
 category: "SEO local"
@@ -9,7 +10,7 @@ category: "SEO local"
 
 **Boostez votre e-réputation et votre SEO local grâce à la puissance de la preuve sociale.**
 
-Dans un monde où 9 consommateurs sur 10 consultent les témoignages clients avant d'acheter, les avis Google ne sont plus une option : ils sont votre poignée de main numérique. Non seulement ils renforcent la confiance, mais ils constituent aussi un levier majeur pour votre référencement local (le fameux « Pack Local » de Google).
+Aujourd'hui, la grande majorité des consommateurs consultent les avis clients avant d'acheter. Les avis Google ne sont plus une option : ils sont votre poignée de main numérique. Non seulement ils renforcent la confiance, mais ils constituent aussi un levier majeur pour votre référencement local (le fameux « Pack Local » de Google).
 
 Voici 5 stratégies concrètes pour inciter vos clients à laisser une note positive.
 

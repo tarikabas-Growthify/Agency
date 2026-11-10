@@ -35,7 +35,9 @@ const articleLd = {
   inLanguage: 'fr-FR',
   mainEntityOfPage: url,
   image: new URL(d.cover.src, site.url).href,
-  author: { '@type': 'Organization', name: 'Growthify', url: site.url },
+  author: d.author
+    ? { '@type': 'Person', name: d.author, worksFor: { '@id': `${site.url}/#organization` } }
+    : { '@type': 'Organization', name: 'Growthify', url: site.url },
   publisher: { '@id': `${site.url}/#organization` },
 };
 const crumbs = [
@@ -44,7 +46,7 @@ const crumbs = [
 ];
 ---
 
-<Base title={`${d.title} | Blog Growthify`} description={d.description} type="article" image={d.cover.src} breadcrumbs={crumbs} jsonLd={[articleLd]}>
+<Base title={d.seoTitle ?? `${d.title} | Blog Growthify`} description={d.description} type="article" image={d.cover.src} breadcrumbs={crumbs} jsonLd={[articleLd]}>
   <article>
     <header class="post-hero" data-hero>
       <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -56,6 +58,7 @@ const crumbs = [
           <span class="chip">{d.category}</span>
           <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time>
           <span>· {readingTime(post.body ?? '')} min de lecture</span>
+          {d.author && <span>· Par {d.author}</span>}
         </div>
         <h1 class="display-2" data-split="words">{d.title}</h1>
         <p class="lead" data-reveal>{d.description}</p>
