@@ -31,6 +31,8 @@ const projects = defineCollection({
       description: z.string(),
       summary: z.string(),
       client: z.string(),
+      // intitulé affiché devant le nom du client ; « Produit » pour un produit de Growthify (FireFits)
+      clientLabel: z.string().optional(),
       industry: z.string(),
       budget: z.string().optional(),
       date: z.coerce.date().optional(),

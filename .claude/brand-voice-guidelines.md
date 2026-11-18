@@ -145,8 +145,8 @@ Variantes présentes sur le site :
 
 3. **Un seul partenaire, de la stratégie à la mise en production**
    - Idée : IA, growth, site, application et SEO sous un même toit, reliés aux objectifs business.
-   - Quand l'utiliser : études de cas (FireFits, boutiques Shopify, sites vitrines), présentation de
-     l'agence.
+   - Quand l'utiliser : études de cas (FireFits, notre propre produit ; boutiques Shopify, sites
+     vitrines), présentation de l'agence.
    - Formulation type : « On relie l'IA, le growth et la technique à vos objectifs business. »
 
 4. **L'IA, sans risque et sans perdre la main**
@@ -355,13 +355,14 @@ questions clients, tous les jours ? ») et montrer ce qu'un agent en ferait.
      anonyme (« une marque de cosmétiques »).
    - À confirmer par Tarik : liste des clients qui ont donné leur accord.
 
-3. **FireFits : projet maison ou client ?**
-   - Constat : l'étude de cas présente FireFits comme un client, mais Tarik pilote aussi FireFits
-     (projet séparé dans `GROWTHIFY-COMMUN.md`).
-   - Recommandation : si FireFits appartient à Tarik, le citer librement comme « un produit que nous
-     avons conçu et lancé », c'est la meilleure preuve de l'agence ; ne jamais publier de chiffres
-     FireFits sans son feu vert.
-   - À confirmer par Tarik : comment présenter le lien entre Growthify et FireFits.
+3. **FireFits : ✅ décidé par Tarik le 2026-11-18.**
+   - Décision : FireFits est le produit de Tarik, et Growthify en est l'éditeur.
+   - Règle : dans les contenus Growthify, présenter FireFits comme « notre propre produit, que nous avons
+     conçu, développé et que nous éditons ». C'est la meilleure preuve de l'agence. Ne jamais écrire
+     « notre client FireFits ». Ne jamais publier de chiffres FireFits (coachs, utilisateurs, revenus)
+     sans le feu vert de Tarik.
+   - Fait : l'étude de cas de growthify.fr affiche désormais « Produit : FireFits » au lieu de
+     « Client : FireFits ».
 
 ### Priorité moyenne
 4. **Le ton de la page À propos est plus ancien.**

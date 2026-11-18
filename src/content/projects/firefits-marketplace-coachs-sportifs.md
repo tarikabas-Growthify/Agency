@@ -3,6 +3,7 @@ title: "Marketplace et app mobile de coachs sportifs"
 description: "FireFits : marketplace de coachs sportifs avec app iOS et Android, réservation, paiement et IA qui analyse les repas en photo pour le suivi nutritionnel."
 summary: "Une plateforme complète pour trouver son coach, réserver, payer et suivre son programme : site, app iPhone et Android, espace coach, back-office et IA nutritionnelle."
 client: "FireFits"
+clientLabel: "Produit"
 industry: "Sport et bien-être"
 stack: ["Astro", "Expo (React Native)", "Supabase", "API IA", "Cloudflare"]
 tasks: "Conception produit, UX/UI, site vitrine, app iOS et Android, application web, API IA d'analyse des repas en photo, espace coach, back-office, SEO"
@@ -14,7 +15,7 @@ order: 0
 
 FireFits est une marketplace qui aide les sportifs à trouver le bon coach : on compare les profils par objectif, discipline et ville (ou en ligne), on réserve ses séances, on paie en sécurité et on suit son programme dans l'app.
 
-Growthify a conçu et développé l'ensemble de la plateforme, de la première maquette à la publication sur l'App Store et Google Play.
+FireFits n'est pas un client : c'est notre propre produit. Growthify l'a conçu et développé, de la première maquette à la publication sur l'App Store et Google Play, et en est aujourd'hui l'éditeur.
 
 ## Notre intervention
 

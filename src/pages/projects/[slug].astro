@@ -25,7 +25,7 @@ const { Content } = await render(project);
 const d = project.data;
 
 const meta = [
-  { label: 'Client', value: d.client },
+  { label: d.clientLabel ?? 'Client', value: d.client },
   { label: 'Secteur', value: d.industry },
   d.budget && { label: 'Budget', value: d.budget },
   d.date && { label: 'Date', value: formatDate(d.date) },
